@@ -1,3 +1,6 @@
+Q.    https://www.interviewbit.com/problems/0-1-knapsack/ 
+
+
 int max(int a,int b)
 {
     if(a>b)return a;
