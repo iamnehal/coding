@@ -1,0 +1,41 @@
+q. https://www.interviewbit.com/problems/subset-sum-problem/
+
+
+
+
+int max(int a,int b)
+{
+    if(a>b)return a;
+    else return b;
+}
+
+int Solution::solve(vector<int> &A, int B) {
+    int w=B;
+    
+    int n=A.size();
+    int t[n+1][w+1];
+    int i,j;
+    int c1,c2;
+    for(i=0;i<=n;i++)
+    {
+        for(j=0;j<=w;j++)
+        {
+            if(j==0 )t[i][j]=1;
+            else if(i==0)t[i][j]=0;
+            else
+            {
+                if(A[i-1]>j)
+                {
+                    t[i][j]=t[i-1][j];
+                }
+                else
+                {
+                    c1=t[i-1][j-A[i-1]];
+                    c2=t[i-1][j];
+                    t[i][j]=c1||c2;
+                }
+            }
+        }
+    }
+    return t[n][w];
+}
