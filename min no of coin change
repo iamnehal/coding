@@ -1,0 +1,46 @@
+https://leetcode.com/problems/coin-change/submissions/ 
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+        int n=coins.size();
+        int w=amount;
+        int t[n+1][w+1];
+        int i,j;
+        int c1,c2;
+        for(i=0;i<n+1;i++)
+        {
+            t[i][0]=0;
+        }
+        for(j=0;j<=w;j++)
+        {
+            t[0][j]=INT_MAX-1;
+            
+            if(j%coins[0]==0)t[1][j]=j/coins[0];
+        else
+            t[1][j]=INT_MAX -1;
+        }
+        for(i=2;i<=n;i++)
+        {
+        for(j=1;j<=w;j++)
+        {
+            if(coins[i-1]>j)
+            {
+            t[i][j]=t[i-1][j];
+            }
+            else
+            {
+                t[i][j]=min(1+t[i][j-coins[i-1]],t[i-1][j]);
+            }
+        }
+            
+        }
+        if(t[n][w]==INT_MAX-1)return -1;
+        return t[n][w];
+        
+        
+        
+        
+    }
+};
