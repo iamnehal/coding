@@ -1,6 +1,27 @@
-https://www.interviewbit.com/problems/majority-element/
+https://www.interviewbit.com/problems/majority-element/                                               
 
-int Solution::majorityElement(const vector<int> &A) {
+
+Alternative code (correct one ) 
+
+
+int i=0; int count =1;
+    int maj=A[0];
+    for(i=1;i<A.size();i++)
+    {
+        if(maj==A[i])count++;
+        else count--;
+        if(count==0)
+        {
+            maj=A[i];
+            count=1;
+        }
+    }
+    return maj;
+    
+    
+    
+    
+    int Solution::majorityElement(const vector<int> &A) {
     vector<int> B=A;
     sort(B.begin(),B.end());
 int i=0;
@@ -18,6 +39,10 @@ return A[i];
     
     
 }
+
+
+
+
 
 
 
