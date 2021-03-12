@@ -1,0 +1,25 @@
+https://www.interviewbit.com/problems/majority-element/
+
+int Solution::majorityElement(const vector<int> &A) {
+    vector<int> B=A;
+    sort(B.begin(),B.end());
+int i=0;
+int j=A.size()-1;
+while(i<j)
+{
+    if(A[i]!=A[j])
+    { 
+        i++;j--;
+    }
+    else
+    break;
+}
+return A[i];
+    
+    
+}
+
+
+
+
+
