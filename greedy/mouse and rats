@@ -1,0 +1,15 @@
+https://www.interviewbit.com/problems/assign-mice-to-holes/
+
+int Solution::mice(vector<int> &A, vector<int> &B) {
+    
+    
+    sort(A.begin(),A.end());
+    sort(B.begin(),B.end());
+    int i=0;
+    int time=INT_MIN;
+    for(i=0;i<A.size();i++)
+    {
+        time=max(time,abs(A[i]-B[i]));
+    }
+    return time;
+}
