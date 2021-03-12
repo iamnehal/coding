@@ -1,0 +1,18 @@
+q.   https://www.interviewbit.com/problems/highest-product/ 
+
+
+int Solution::maxp3(vector<int> &A) {
+    int n=A.size(); 
+   
+    sort(A.begin(),A.end());
+  signed int ans=0;
+ 
+  int c1=A[0]*A[1];
+  int c2=A[n-2]*A[n-3];
+  ans=max(c1*A[n-1],c2*A[n-1]);
+  
+ 
+  
+    return ans;
+}
+ 
