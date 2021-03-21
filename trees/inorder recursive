@@ -1,0 +1,24 @@
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+ vector<int> ans;
+void  in(TreeNode* A,vector<int>&v)
+ {
+     if(A!=NULL)
+     {
+         in(A->left,v);
+         v.push_back(A->val);
+         in(A->right,v);
+     }
+ }
+vector<int> Solution::inorderTraversal(TreeNode* A) {vector<int>ans1;
+
+    in(A,ans1);
+    return ans1;
+}
