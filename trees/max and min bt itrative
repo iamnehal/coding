@@ -1,0 +1,117 @@
+// { Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+// A tree node
+struct node
+{
+	int data;
+	struct node *left;
+	struct node *right;
+	
+	node(int x){
+	    data = x;
+	    left = NULL;
+	    right = NULL;
+	}
+};
+
+// Returns maximum value in a given Binary Tree
+int findMax(struct node* root);
+// Returns minimum value in a given Binary Tree
+int findMin(struct node* root);
+
+void insert(struct node *root,int n1,int n2,char lr)
+ {
+     if(root==NULL)
+        return;
+     if(root->data==n1)
+     {
+         switch(lr)
+         {
+          case 'L': root->left=new node(n2);
+                    break;
+          case 'R': root->right=new node(n2);
+                    break;
+         }
+     }
+     else
+     {
+         insert(root->left,n1,n2,lr);
+         insert(root->right,n1,n2,lr);
+     }
+ }
+// Driver program to test above functions
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+    int n;
+    cin>>n;
+    struct node *root=NULL;
+    while(n--)
+    {
+        char lr;
+        int n1,n2;
+        cin>>n1>>n2;
+        cin>>lr;
+        if(root==NULL)
+        {
+            root=new node(n1);
+            switch(lr){
+                    case 'L': root->left=new node(n2);
+                    break;
+                    case 'R': root->right=new node(n2);
+                    break;
+                    }
+        }
+        else
+        {
+            insert(root,n1,n2,lr);
+        }
+    }
+
+    cout<<findMax(root)<<" "<<findMin(root)<<endl;
+    }
+    return 0;
+}
+// } Driver Code Ends
+
+
+// Returns maximum value in a given Binary Tree
+int findMax(struct node* root)
+{  struct node* node1;
+queue<struct node*>q;
+int max1=INT_MIN;
+q.push(root);
+while(q.empty()==0)
+{
+    node1=q.front();
+    q.pop();
+    max1=max(max1,node1->data);
+    if(node1->left)q.push(node1->left);
+    if(node1->right)q.push(node1->right);
+    
+}
+return max1;
+}
+
+// Returns minimum value in a given Binary Tree
+int findMin(struct node* root)
+{
+ struct node* node1;
+queue<struct node*>q;
+int min1=INT_MAX;
+q.push(root);
+while(q.empty()==0)
+{
+    node1=q.front();
+    q.pop();
+    min1=min(min1,node1->data);
+    if(node1->left)q.push(node1->left);
+    if(node1->right)q.push(node1->right);
+}
+return min1;
+}
