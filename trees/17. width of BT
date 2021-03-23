@@ -1,0 +1,29 @@
+class Solution
+{
+    public:
+    int getMaxWidth(Node* root)
+    {
+        
+       queue<Node*>q;
+       int size=0;
+       q.push(root);
+       int ans=0;
+       while(1)
+       {
+           if(q.empty())
+    break;
+    size=q.size();
+    ans=max(ans,size);
+    while(size)
+    {
+        root=q.front();
+        q.pop();
+        if(root->left)q.push(root->left);
+        if(root->right)q.push(root->right);
+        size--;
+    }
+    
+    
+       } return ans;
+    }
+};
