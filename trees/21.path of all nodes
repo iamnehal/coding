@@ -1,0 +1,18 @@
+int res=INT_MIN;
+    int  solve(Node* root)
+     {
+         if(root==NULL) return 0;
+         
+    int l=solve(root->left);
+    int r=solve(root->right);
+    int temp=1+max(l,r);
+    int ans=max(temp,1+l+r);
+    res=max(res,ans);
+    return temp;
+     }
+    
+    
+    int diameter(Node* root) {
+    int ans=solve(root);
+    return res;
+    }
