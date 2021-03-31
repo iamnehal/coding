@@ -1,0 +1,40 @@
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+  //find index which is maximum ..Build the tree around it 
+ 
+ TreeNode* solve(vector<int> &A,int start,int end)
+ {
+     
+     if(start>end)return NULL;
+ 
+     int k=0; int max1=-1; int maxv=INT_MIN;
+     
+     for(k=start;k<=end;k++)
+     { if(maxv<A[k]) 
+     {
+     max1=k;
+     maxv=A[k];
+         
+     }
+     }
+     
+     TreeNode* root=new TreeNode(A[max1]);
+     root->left=solve(A,start,max1-1);
+     root->right=solve(A,max1+1,end);
+     return root;
+     
+     
+ }
+TreeNode* Solution::buildTree(vector<int> &A) {
+    
+    
+    return solve(A,0,A.size()-1);
+    
+}
