@@ -1,0 +1,17 @@
+TreeNode* solve(TreeNode* A)
+{ if(A==NULL)return NULL;
+if(A->left==NULL && A->right==NULL)return A;
+
+    TreeNode* temp=NULL;
+    temp=A->left;
+    A->left=solve(A->right);
+    A->right=solve(temp);
+    
+return A;
+    
+}
+TreeNode* Solution::invertTree(TreeNode* A) {
+    
+    
+    return solve(A);
+}
