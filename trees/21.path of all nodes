@@ -1,18 +1,31 @@
-int res=INT_MIN;
-    int  solve(Node* root)
+ int length;
+ 
+ void solve(Node* root,vector<int> b, vector<vector<int>> &v)
+ {
+     if(root==NULL)return;
+     
+     b.push_back(root->data);
+     if(root->left==NULL && root->right==NULL)
      {
-         if(root==NULL) return 0;
+         v.push_back(b);
          
-    int l=solve(root->left);
-    int r=solve(root->right);
-    int temp=1+max(l,r);
-    int ans=max(temp,1+l+r);
-    res=max(res,ans);
-    return temp;
      }
+     
+     else
+     {
+         solve(root->left,b,v);
+         solve(root->right,b,v);
+     }
+ }
+ 
+ 
+ 
+vector<vector<int>> Paths(Node* root)
+{   vector<vector<int>> v;
+ 
+vector<int>b;  
+
+solve(root,b,v);
+return v;
     
-    
-    int diameter(Node* root) {
-    int ans=solve(root);
-    return res;
-    }
+}
