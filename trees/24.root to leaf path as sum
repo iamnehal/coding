@@ -27,18 +27,19 @@ int Solution::sumNumbers(TreeNode* A) {
     vector<int>v;
     vector<vector<int>>a;
     solve(A,v,a);
-    int ans=0;
+    long long int ans=0;
+    
     
     for(int i=0;i<a.size();i++)
-    { long long int sum=0;
+    { long long int sum=0; 
         for(int j=0;j<=a[i].size()-1;j++)
-        {
-            sum=sum+ pow(10,a[i].size()-1-j)*a[i][j];
+        {     
+            sum=(sum*10)%1003+a[i][j];
             sum=sum%1003;
             
-        } 
-        sum=sum%1003;
-        ans=ans%1003+sum;
+        }
+        ans=(ans+sum)%1003;
+            
     }
     return ans%1003;
     
