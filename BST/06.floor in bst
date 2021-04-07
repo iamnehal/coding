@@ -1,0 +1,57 @@
+q.https://www.codingninjas.com/codestudio/problems/floor-from-bst_920457
+
+
+
+
+
+/*****************************************
+Following is the BinaryTreeNode structure
+
+template <typename T>
+class BinaryTreeNode {
+    public : 
+    T data;
+    BinaryTreeNode<T> *left;
+    BinaryTreeNode<T> *right;
+
+    BinaryTreeNode(T data) {
+        this -> data = data;
+        left = NULL;
+        right = NULL;
+    }
+
+};
+
+******************************************/
+
+
+
+
+
+
+
+int floor(BinaryTreeNode<int> *root, int key)
+{   
+
+    int ans=0;
+    while(root!=NULL)
+    {
+        if(root->data==key)return key;
+        else if(root->data>key)
+        {
+            root=root->left;
+        }
+        else
+        {
+            ans=root->data;
+            root=root->right;
+        }
+        
+        
+        
+    }return ans;
+    
+    
+
+	
+}
