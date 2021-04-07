@@ -1,0 +1,28 @@
+q. link https://www.interviewbit.com/problems/valid-bst-from-preorder/
+
+soln link : https://www.youtube.com/watch?v=0kkVobZ6Ebc&t=898s 
+
+
+code: int Solution::solve(vector<int> &A) {
+    
+    stack<int> post;
+    int lastr=INT_MIN;
+    int i=0;
+    for(i=0;i<A.size()-1;i++)
+    {
+        if(lastr>A[i])return 0;
+        
+        while(post.empty()!=1 && post.top()<A[i])
+        {
+            lastr=post.top();
+            post.pop();
+        }
+        post.push(A[i]);
+        
+        
+    }
+    return 1;
+    
+    
+    
+}
