@@ -1,0 +1,41 @@
+
+
+/**********************************************************
+        Following is the Binary Tree Node class structure
+
+        template <typename T>
+        class BinaryTreeNode {
+        public :
+        T data;
+        BinaryTreeNode<T> *left;
+        BinaryTreeNode<T> *right;
+
+        BinaryTreeNode(T data) {
+                this -> data = data;
+                left = NULL;
+                right = NULL;
+        }
+        };
+
+***********************************************************/
+
+int findCeil(BinaryTreeNode<int> *root, int key)
+{
+   int ans=-1;
+    if(root==NULL)return -1;
+    while(root!=NULL)
+    {
+        if(root->data==key) return root->data;
+        else if(root->data > key)
+        {
+            ans=root->data;
+            root=root->left;
+        }
+        else
+        {
+            root=root->right;
+        }
+    } return ans;
+    
+
+}
