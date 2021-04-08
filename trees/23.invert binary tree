@@ -7,7 +7,7 @@ if(A->left==NULL && A->right==NULL)return A;
     A->left=solve(A->right);
     A->right=solve(temp);
     
-return A;
+return A; 
     
 }
 TreeNode* Solution::invertTree(TreeNode* A) {
