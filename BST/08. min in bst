@@ -1,0 +1,24 @@
+
+https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1#
+
+
+int minValue(Node* A)
+{ 
+    
+    
+                      
+                       
+                           
+                           
+                           while(A->left!=NULL)
+                           {
+                               A=A->left;
+                           }
+                           
+                           
+                          
+                           
+                           
+                          return A->data; 
+                       
+}
