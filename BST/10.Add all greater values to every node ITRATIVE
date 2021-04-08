@@ -1,0 +1,29 @@
+Q. https://practice.geeksforgeeks.org/problems/add-all-greater-values-to-every-node-in-a-bst/1#
+
+
+Node* modify(Node *A)
+{ Node* as=A; int sum=0;
+      {
+        stack<Node*>s; int temp=0;
+    vector<int>ans;
+    while(A!=NULL||s.empty()==0)
+    {
+        while(A!=NULL)
+        {
+            s.push(A);
+              A=A->right;
+        }
+        if(s.empty()==0)
+        {
+            A=s.top();
+            s.pop();
+            temp=A->data;
+            A->data=A->data+sum;
+            sum=sum+temp;
+            temp=0;
+          A=A->left;
+        }
+    }
+    return as;
+}
+}
