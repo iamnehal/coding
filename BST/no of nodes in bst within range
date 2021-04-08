@@ -1,0 +1,32 @@
+
+
+Soln 1: trivial 
+
+void solve(Node *root,int l,int h,int* a)
+ {
+        if(root==NULL)return;
+        solve(root->left,l,h,a);
+        {
+            if(root->data>=l && root->data<=h )
+            (*a)++;
+        }
+        solve(root->right,l,h,a);
+        
+        
+     
+     
+ }
+
+int getCount(Node *root, int l, int h)
+{ int a=0;
+  solve(root,l,h,&a);
+  return a;
+  
+}
+
+
+
+Soln 2: Using property that tree is bst : 
+
+
+
