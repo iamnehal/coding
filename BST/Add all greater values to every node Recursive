@@ -1,0 +1,28 @@
+q : https://practice.geeksforgeeks.org/problems/add-all-greater-values-to-every-node-in-a-bst/1#
+
+
+
+void solve(Node *A,int *sum)
+{ int temp=0;
+    if(A==NULL)return;
+    solve(A->right,sum);
+    
+    temp=A->data;
+    A->data=A->data+*(sum);
+    *(sum)=*(sum)+temp;
+    solve(A->left,sum);
+    
+    
+    
+    
+}
+
+Node* modify(Node *root)
+{
+    Node* temp=root;
+    
+    int sum=0;
+    solve(root,&sum);
+    return temp;
+    
+}
