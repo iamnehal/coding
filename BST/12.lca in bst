@@ -1,0 +1,16 @@
+Node* LCA(Node *root, int n1, int n2)
+{ 
+while(root!=NULL)
+{
+  
+  
+
+  if(root->data>n1 && root->data>n2)root=root->left;
+else  if(root->data<n1 && root->data<n2) root=root->right;
+ // if(root->data >n1 && root->data<n2)return root;
+ else if(root->data==n1)return root;
+ else if(root->data==n2)return root;
+ else if(root->data>n1 && root->data<n2 || root->data<n1 &&root->data>n2)return root;
+  
+} return root;
+}
