@@ -1,0 +1,72 @@
+
+
+
+/*Structure of the Node of the BST is as
+struct Node
+{
+	int data;
+	Node* left, *right;
+};
+*/
+// Your are required to complete this function
+// function should return root of the modified BST
+
+
+
+
+
+
+void inorder(Node* A,vector<int> &v) //here we have found 
+//inorder transversal of tree by recursion 
+{
+    if(A==NULL)return ;
+    
+    inorder(A->left,v);
+    
+    v.push_back(A->data);
+    inorder(A->right,v);
+   }
+
+Node* balencer(Node* root,vector<int>v,int start,int end)
+{
+    //here we observe that for a balenced tree,the middle element
+    //of sorted arrangement of elements will be root of that tree
+    //so we do this recursively and build our tree such middle element
+    //becomes root
+    
+    
+    
+    if(start>end)return NULL;
+    
+    int mid=(start+end)/2;
+    Node* midroot=new Node(v[mid]);
+    midroot->left=balencer(midroot,v,start,mid-1);
+    midroot->right=balencer(midroot,v,mid+1,end);
+    return midroot;
+    
+    
+}
+
+Node* buildBalancedTree(Node* root)
+{ 
+     //here we have first converted our bst to a sorted array 
+     
+     //Note that inorder transversal always gives us sorted array
+     
+     
+     
+    Node* temp=root;
+    
+vector<int>v;
+inorder(temp,v);
+int start=0;
+int end=v.size();
+end--;
+return balencer(root,v,start,end);
+
+
+
+}
+
+
+
