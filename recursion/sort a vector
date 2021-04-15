@@ -1,0 +1,50 @@
+class Solution {
+public:
+    
+     void insert(vector<int>&v,int last)
+     {
+         if(v.size()==0 || v[v.size()-1]<=last)
+         {
+             v.push_back(last);
+             return ;
+         }
+         
+         int temp=v[v.size()-1];
+         v.pop_back();
+         insert(v,last);
+         v.push_back(temp);
+         return;
+         
+         
+     }
+    
+    void sort(vector<int>&v)
+    {
+        if(v.size()==1)return;
+        
+        
+        int last=v[v.size()-1];
+        v.pop_back();
+        
+        sort(v);
+         
+         insert(v,last);
+         return ;
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    vector<int> sortArray(vector<int>& nums) {
+        
+        sort(nums);
+        return nums;
+        
+        
+    }
+};
