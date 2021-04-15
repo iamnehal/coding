@@ -1,0 +1,20 @@
+https://practice.geeksforgeeks.org/problems/sort-a-stack/1#
+
+
+
+void insert(stack<int> &S,int temp)
+{
+    if(S.empty()==1||S.top()<=temp)
+    {
+        S.push(temp);
+        return;
+    }
+    
+    int temp1=S.top();
+    S.pop();
+    
+    insert(S,temp);
+    S.push(temp1);
+    return;
+    
+}
