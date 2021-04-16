@@ -1,0 +1,28 @@
+class Solution {
+public:
+
+
+
+
+    void deleteMid(stack<int>&s, int n)
+    {
+        if(s.empty())return; //if stack is empty return 
+        
+        if(s.size() == ceil(n/2.0)) //condition according to question 
+        {
+            s.pop();
+            return ;
+        }
+        
+        int temp=s.top();  //store the top of stack and pop it
+        s.pop();
+        deleteMid(s,n);  //induction and 
+        //HYPOTHEISIS
+        s.push(temp);  //PUSH BACK INTO STACK OUR REMOVED ELEMENT
+            return;
+        
+        
+        
+        
+    }
+};
