@@ -1,0 +1,40 @@
+
+
+
+https://www.codingninjas.com/codestudio/problems/reverse-stack-using-recursion_631875
+
+
+void insert(stack<int>&s,int temp)
+{
+    
+    if(s.empty())   //if stack is empty then simply return by adding it
+    {
+        s.push(temp);
+        return;
+    }
+
+    int temp1=s.top();
+    s.pop();   //to reduce the size we store the toppmost element and pop it  now we simply insert the orignal one and later on insert this element back to stack 
+    insert(s,temp);
+    s.push(temp1);
+    
+    
+}
+
+void reverseStack(stack<int> &s) { 
+   
+    
+    if(s.size()<=1) // if no of element is 0 or 1 then we don't need to reverse then return 
+    {
+        return;
+    }
+    
+    int temp=s.top();  //store top and pop to reduce size
+    s.pop();
+    reverseStack(s);  //reverse the stack
+   insert(s,temp);   //we obvserved that stack from top 5 4 3 2 1  has now become   5 in temp   1 2 3 4   but we want 1 2 3 4 5 this means
+   // we have to insert an element in the last of stack so we used recursion
+    return;
+    
+    
+}
