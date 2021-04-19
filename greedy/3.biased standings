@@ -1,0 +1,38 @@
+
+https://www.spoj.com/problems/BAISED/
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+int main()
+{
+int t;
+cin>>t;
+while(t--)
+{
+	
+int n;
+cin>>n;
+int i;
+vector<pair<long long int ,string>>v;
+for(i=0;i<n;i++)
+{
+
+	string s;
+	long long temp;
+	cin>>s>>temp;
+	v.push_back(make_pair(temp,s));
+}
+
+
+sort(v.begin(),v.end());
+int count=0;
+for(i=0;i<n;i++)
+{
+count=count+abs(i+1-v[i].first);
+}
+cout<<count<<endl;
+
+} return 0;
+}
