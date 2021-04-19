@@ -1,0 +1,91 @@
+https://practice.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1#
+
+int binary(int a[],int x,int low,int high)
+    { int mid=0;
+    
+    
+    int ans;
+    while(low<high)
+    {
+        mid=(high+low)/2;
+        if(a[mid]==x)
+        {
+            return a[mid];
+        }
+        
+        
+        if(a[mid]>x)
+        {
+            
+            high--;
+            
+            
+        }
+        else if(a[mid]<x)
+        {
+        if(x>a[high])
+        {
+            return a[high];
+        }
+        else 
+        {
+            
+            ans=a[mid];
+            low++;
+        }
+            
+        }
+        
+        
+    
+        
+    }
+        return a[mid];
+        
+        
+        
+    }
+
+
+
+
+class Solution{
+    
+   
+    
+    
+public:
+    vector<int> minPartition(int N)
+    {
+int a[]={1,2,5,10,20,50,100,200,500,2000};
+ vector<int>v;
+ while(N>0)
+ {
+     int temp=binary(a,N,0,9);
+     //cout<<temp<<endl;
+     v.push_back(temp);
+     N=N-temp;
+     
+ }return v;
+
+
+    }
+};
+
+// { Driver Code Starts.
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int N;
+        cin>>N;
+        
+        Solution ob;
+        vector<int> numbers = ob.minPartition(N);
+        for(auto u: numbers)
+            cout<<u<<" ";
+        cout<<"\n";
+    }
+    return 0;
+}  // } Driver Code Ends
