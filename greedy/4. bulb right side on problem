@@ -1,0 +1,30 @@
+https://www.interviewbit.com/problems/interview-questions/
+
+
+/*
+
+we are counting from l to r if we get 1 no change to our count and sum
+if sum%2 (this donates whether effect of bulbs changes to their right net is going to have 
+odd effect or no effevt(even))
+ */
+
+int Solution::bulbs(vector<int> &A) {
+
+int n=A.size(); int count=0;
+int sum=0;
+int i=0;
+for(i=0;i<n;i++)
+
+{
+
+if((sum%2 +A[i])%2==0)
+{sum++;
+	count++;
+
+}
+
+
+}
+return count;
+
+}
