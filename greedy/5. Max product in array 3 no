@@ -1,0 +1,17 @@
+q.   https://www.interviewbit.com/problems/highest-product/ 
+
+int Solution::maxp3(vector<int> &A) {
+    
+    int n=A.size();
+    if(n<3)return -1;
+    sort(A.begin(),A.end()); 
+    long long case1,case2,case3;
+    long long int ans=0;
+case1=A[n-1]*A[n-2]*A[n-3];//multipy the last 3 biggest nos
+case2=A[0]*A[1]*A[3]; // muliply the bottom 3 no 
+case3=A[0]*A[1]*A[n-1]; //multiply the botton 2 nos(negative case )and highest +ve or 0
+ans=max(case1,case2);
+ans=max(ans,case3);
+return ans;
+}
+
