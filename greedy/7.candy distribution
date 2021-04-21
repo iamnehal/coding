@@ -1,0 +1,35 @@
+https://www.interviewbit.com/problems/distribute-candy/
+
+int Solution::candy(vector<int> &a) {
+    int n=a.size();
+    int left[n];
+    int right[n];
+    int i=0;
+ for(i=0;i<n;i++)  
+ {
+     left[i]=1;
+     right[i]=1;
+    
+}//everyone gets one candy
+
+
+for(i=1;i<n;i++)
+{
+    if(a[i]>a[i-1])
+    left[i]=left[i-1]+1;
+    
+}
+for(i=n-2;i>=0;i--)
+{
+    if(a[i]>a[i+1])
+    {
+        right[i]=right[i+1]+1;
+    }
+}
+
+int sum=0;
+for(i=0;i<n;i++)
+{
+ sum=sum+max(left[i],right[i]);
+}return sum;
+}
