@@ -1,0 +1,52 @@
+
+https://www.youtube.com/watch?v=38JLfQGVlkw&ab_channel=TECHDOSE
+
+
+https://www.interviewbit.com/problems/meeting-rooms/
+int Solution::solve(vector<vector<int> > &A) {
+
+int n=A.size();
+int i,j;
+int a[n],b[n];
+
+for(i=0;i<n;i++)
+{
+a[i]=A[i][0];
+b[i]=A[i][1];
+
+
+ }
+ //saving no's to array of arrival ,departure
+
+sort(a,a+n);
+sort(b,b+n);
+//sorting arrays
+int maxp=1;
+int ans=1;
+i=1;
+j=0;
+while(i<n)
+{
+
+if(a[i]<b[j])
+{maxp++;
+    i++;
+
+}
+else if(a[i]>=b[j])
+{
+    j++;
+    maxp--;
+}
+
+ans=max(ans,maxp);
+
+
+}
+
+
+
+return ans;
+}
+
+
