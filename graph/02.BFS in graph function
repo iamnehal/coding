@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1  
+
+	vector<int>bfsOfGraph(int n, vector<int> a[]){
+	    
+	    bool v[n];
+queue<int> q;
+vector<int> ans;
+q.push(0); int cur=0;
+while(!q.empty())
+{
+cur=q.front();
+q.pop();
+ans.push_back(cur);
+for(int i=0;i<a[cur].size();i++)
+{
+    if(!(v[a[cur][i]]))
+    {
+q.push(a[cur][i]);
+v[a[cur][i]]=true;
+    }
+}
+
+}
+return ans;
+
+
+	    
+	}
