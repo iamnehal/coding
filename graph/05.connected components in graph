@@ -1,0 +1,65 @@
+https://code.hackerearth.com/problem/algorithm/connected-components-in-a-graph/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void dfs(vector<int>v[],bool *vis,int s)
+{
+
+
+    vis[s]=true;
+    for(int i=0;i<v[s].size();i++)
+    { int temp=v[s][i];
+        
+        
+        if(vis[temp]==false)
+       { dfs(v,vis,temp);}
+
+    }
+}
+
+
+int solve( vector<int> a[],int n)
+{ bool vis[n+1]={false};
+int count=0;
+for(int i=1;i<=n;i++)
+{
+    if(vis[i]==false)
+    {
+           dfs(a,vis,i);
+           count++;
+        
+    }
+}
+
+return count;
+
+
+}
+
+
+
+int main()
+{
+
+int n,e;
+cin>>n>>e;
+vector<int> a[n+1];
+for(int i=1;i<=e;i++)
+{
+int u,v;
+cin>>u>>v;
+
+
+a[u].push_back(v);
+a[v].push_back(u);
+
+
+}
+
+int ans=solve(a,n);
+cout<<ans<<endl;
+return 0;
+
+
+}
