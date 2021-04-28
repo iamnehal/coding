@@ -1,0 +1,46 @@
+https://practice.geeksforgeeks.org/problems/k-closest-elements3619/1#
+
+class Solution{   
+public:
+    vector<int> printKClosest(vector<int> a, int n, int k, int x) {
+        priority_queue<pair<int,int>>maxh;
+        
+       
+        int i=0;vector<int>v;
+        for(i=0;i<n;i++)
+        { if(a[i]!=x)
+        {
+            maxh.push(make_pair((abs(x-a[i])),a[i]) );
+            if(maxh.size()>k)maxh.pop();
+        }
+        }
+        
+        int temp=0; 
+        int temp2=0;
+        //yaha tk max heap ka use karke element bana liye       
+         pair<int,int>top;
+        while(maxh.empty()==0)
+        {top=maxh.top();
+        maxh.pop();
+        
+        if(v.size()!=0 && (abs(top.second-x)==(abs(v.back()-x)))) // a/q to q , greater element pehle ana chaiye agar 
+        //difference same ho to par vo max heap se nahi hoga so this special condition for exchange of values when diff //same
+        { temp=top.second;
+           
+            temp2=v.back();
+            v.pop_back();
+            v.push_back(temp);
+            v.push_back(temp2);
+        }  
+        
+        else 
+        {
+        v.push_back(top.second);
+        }
+        
+        }
+        reverse(v.begin(),v.end());
+        
+
+return v;
+    }
