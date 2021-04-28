@@ -1,0 +1,24 @@
+https://www.interviewbit.com/problems/k-largest-elements/
+
+vector<int> Solution::solve(vector<int> &A, int B) {
+    
+    priority_queue<int ,vector<int>,greater<int> > minh; int i;
+    for(i=0;i<A.size();i++)
+    {
+        minh.push(A[i]);
+        if(minh.size()>B)
+        {
+            minh.pop();
+        }
+        
+        
+        
+    } vector<int> v;
+    while(minh.empty()==0)
+    {
+        v.push_back(minh.top());
+        minh.pop();
+        
+    }
+    return v;
+}
