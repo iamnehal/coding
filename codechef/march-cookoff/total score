@@ -1,0 +1,49 @@
+https://www.codechef.com/CCRC21C/problems/TOTSCR
+
+#include <iostream>
+#include<math.h> 
+#include<string>
+#include<vector>
+
+using namespace std;
+int main()
+{
+  int t;
+cin>>t;
+while(t--)
+{
+int n,k;
+cin>>n>>k;
+int a[k];
+for(int i=0;i<k;i++)
+{ cin>>a[i];
+
+}
+vector<string>v;
+for(int i=0;i<n;i++)
+{
+  string s;
+  cin>>s;
+  v.push_back(s);
+
+} long long int sum=0;
+int digit=0;
+for(int i=0;i<n;i++)
+
+{
+for(int j=0;j<k;j++)
+{
+  string temp=v[i];
+  if(temp[j]=='0') digit=0;
+  else if(temp[j]=='1')digit=1;
+  sum=sum+a[j]*digit;
+
+}
+cout<<sum<<endl;
+sum=0;
+
+}
+
+}
+return 0;
+}
