@@ -1,0 +1,45 @@
+q. https://www.interviewbit.com/problems/maximum-sum-combinations/
+soln:https://www.geeksforgeeks.org/k-maximum-sum-combinations-two-arrays/ 
+
+
+vector<int> Solution::solve(vector<int> &A, vector<int> &B, int C) {
+    sort(A.begin(),A.end());
+    sort(B.begin(),B.end());
+    int n=A.size();
+    
+    priority_queue<pair<int,pair<int,int>> > maxh;
+vector<int>v;
+
+int sum=0;
+maxh.push(make_pair(A[n-1]+B[n-1],make_pair(n-1,n-1)));
+set<pair<int,int>>s;
+s.insert(make_pair(n-1,n-1)); 
+int i,j;
+pair<int,pair<int,int>>temp;
+pair<int,int>temp1;
+int k=0;
+for(k=0;k<C;k++)
+{ temp=maxh.top();
+maxh.pop();
+v.push_back(temp.first);
+s.insert(temp.second);
+i=temp.second.first;
+j=temp.second.second;
+temp1=make_pair(i-1,j);
+if(s.find(temp1)==s.end())
+{
+    maxh.push(make_pair(A[i-1]+B[j],temp1));
+    s.insert(temp1);
+}
+temp1=make_pair(i,j-1);
+
+    if(s.find(temp1)==s.end())
+{
+    maxh.push(make_pair(A[i]+B[j-1],temp1));
+    s.insert(temp1);
+}
+}
+
+return v;
+    
+}
