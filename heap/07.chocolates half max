@@ -1,0 +1,24 @@
+https://www.interviewbit.com/problems/magician-and-chocolates/
+
+
+int Solution::nchoc(int A, vector<int> &B) {
+    
+    priority_queue<int>maxh;
+    for(int i=0;i<B.size();i++)
+    {
+        maxh.push(B[i]);
+    }
+    int temp=0;
+     long long sum=0;
+    int m = 1000000007;
+    while(A--)
+    { temp=maxh.top();
+    sum=(sum%m+temp%m)%m;
+ maxh.pop();
+ temp=floor(temp/2);
+        maxh.push(temp);
+        
+        
+    }
+    return (sum);
+}
