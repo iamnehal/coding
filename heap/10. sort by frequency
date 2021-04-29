@@ -1,0 +1,48 @@
+https://leetcode.com/problems/sort-array-by-increasing-frequency/submissions/
+
+
+bool comp(const pair<int,int> &a ,const pair<int,int> &b)
+{
+    if(a.second==b.second)
+    {
+        return a.first>b.first;
+    }
+    return a.second<b.second;
+}
+
+class Solution {
+public:
+    vector<int> frequencySort(vector<int>& nums) {
+        unordered_map<int,int>um;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(um.find(nums[i])==um.end())
+            {
+                um.insert(make_pair(nums[i],1));
+            }
+            else
+            {
+                um[nums[i]]++;
+            }
+            
+        }
+        vector<pair<int ,int>>v;
+        for(auto x:um)
+        {
+            v.push_back(x);
+        }
+        
+        sort(v.begin(),v.end(),comp);int j=0;
+        vector<int >ans;
+        for(auto x:v){
+            j=x.second;
+            while(j--)
+            {
+                ans.push_back(x.first);
+            }
+        }
+        return ans;
+        
+        
+    }
+};
