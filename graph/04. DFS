@@ -1,0 +1,65 @@
+https://www.youtube.com/watch?v=CvUMf8c2JFo&list=PLEJXowNB4kPzByLnnFYNSCoqtFz0VKLk5&index=3&ab_channel=TECHDOSE
+
+
+void dfs(vector<int>adj[],int s,vector<int> &vis,vector<int> &ans)
+	{
+	    
+	    vis[s]=1;//marking visited nodes as 1
+	    ans.push_back(s);
+	    for(auto x:adj[s])
+	    { if(vis[x]==0)
+	    {
+	        dfs(adj,x,vis,ans);
+	    }
+	        
+	    }
+	    return ;
+	}
+	
+	
+	vector<int>dfsOfGraph(int V, vector<int> adj[])
+	{
+	  
+	  vector<int>vis(V,0);
+	  vector<int>ans;
+	  dfs(adj,0,vis,ans);
+	  return ans;
+	}
+};
+
+
+
+itrative(won't get accepted ) 
+
+class Solution 
+{
+    public:
+	//Function to return a list containing the DFS traversal of the graph.
+	vector<int>dfsOfGraph(int V, vector<int> adj[])
+	{ int temp=0;
+	    int vis[V]={0};
+	    stack<int>s;
+	    vector<int>ans;
+	    vis[0]=1;
+	    s.push(0);
+	    
+	    while(s.size()!=0)
+	    {temp=s.top();
+	    s.pop();
+	    
+	   
+	      
+	        for(auto i:adj[temp])
+	        {
+	            if(vis[i]==0)
+	            {
+	                vis[i]=1;
+	                s.push(i);
+	                
+	            }
+	        }  ans.push_back(temp);
+	        
+	    }
+	    return ans;
+	}
+};
