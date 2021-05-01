@@ -1,31 +1,28 @@
 https://www.youtube.com/watch?v=CvUMf8c2JFo&list=PLEJXowNB4kPzByLnnFYNSCoqtFz0VKLk5&index=3&ab_channel=TECHDOSE
 
 
-void dfs(vector<int> a[],int s,bool *v,vector<int> &ans)
-{
-    
-    v[s]=true;//marking visited node as true 
-    ans.push_back(s);//storing value in vector 
-    for(int i=0;i<a[s].size();i++)
-    {
-        if(v[a[s][i]]==false)
-        {
-            dfs(a,a[s][i],v,ans);
-            
-        }
-    }
-    
-    
-    
-    
-}
-
-	vector<int>dfsOfGraph(int n, vector<int> adj[]){
+void dfs(vector<int>adj[],int s,vector<int> &vis,vector<int> &ans)
+	{
 	    
-	    bool vis[n]={false};
-	    vector<int> ans;
-	    dfs(adj,0,vis,ans);
-	    return ans;
-	    
-	    
+	    vis[s]=1;//marking visited nodes as 1
+	    ans.push_back(s);
+	    for(auto x:adj[s])
+	    { if(vis[x]==0)
+	    {
+	        dfs(adj,x,vis,ans);
+	    }
+	        
+	    }
+	    return ;
 	}
+	
+	
+	vector<int>dfsOfGraph(int V, vector<int> adj[])
+	{
+	  
+	  vector<int>vis(V,0);
+	  vector<int>ans;
+	  dfs(adj,0,vis,ans);
+	  return ans;
+	}
+};
