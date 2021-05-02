@@ -1,0 +1,66 @@
+
+
+https://www.youtube.com/watch?v=1ZGJzvkcLsA
+
+class Solution
+{   
+    public: 
+    //Function to return a list of integers denoting spiral traversal of matrix.
+    vector<int> spirallyTraverse(vector<vector<int> > matrix, int r, int c) 
+    {
+        int i,j;
+vector<int >v;
+
+    int left,right,top,down=0;//declration of pointers
+left=0;
+right=c-1;
+top=0;
+down=r-1;
+
+
+    int dir=0;
+    // 0 is for right to left 1 =top to down 2 is right to left
+    // 3 is for down to top  
+    while(down>=top && right>=left) //while condition for running
+    {
+        
+        if(dir==0)   
+        {
+            for(j=left;j<=right;j++)
+            {
+                v.push_back(matrix[top][j]);
+              
+            }  top++; 
+        }
+        else if(dir==1)
+        {
+            for(i=top;i<=down;i++)
+            {
+                v.push_back(matrix[i][right]);
+              
+            }  right--;
+        }
+        else if(dir==2)
+        {
+            for(j=right;j>=left;j--)
+            {
+                v.push_back(matrix[down][j]);
+               
+            } down--;
+        }
+        else if(dir==3)
+        {
+            for(i=down;i>=top;i--)
+            {
+                v.push_back(matrix[i][left]);
+               
+            } left++;
+        }
+        
+        dir=(dir+1)%4; //to update direction 
+        
+    }
+
+return v;
+    }
+};
