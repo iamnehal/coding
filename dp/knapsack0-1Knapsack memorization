@@ -43,3 +43,51 @@ int Solution::solve(vector<int> &A, vector<int> &B, int C) {
 }
 
 
+//method 2
+
+int max(int a,int b)
+{
+    if(a>b)return a;
+    return b;
+}
+
+int ans(vector<int>wt,vector<int>val,int w,int n,vector<vector<int>> &t)
+{ int t1,t2;
+    if(n==0||w==0)
+    {
+        return 0;
+    }
+    
+    if(t[w][n]!=-1)
+    return t[w][n];
+    else 
+    {
+    if(wt[n-1]>w)
+    {
+        t[w][n]=ans(wt,val,w,n-1,t);
+        return t[w][n];
+    }
+    else 
+    {
+        t1=val[n-1]+ans(wt,val,w-wt[n-1],n-1,t);
+        t2=ans(wt,val,w,n-1,t);
+        t[w][n]=max(t1,t2);
+        return t[w][n];
+        
+        
+    }
+    }
+    
+}
+
+
+int Solution::solve(vector<int> &A, vector<int> &B, int C) {
+    int n=A.size();//size of array
+    vector<vector<int>> t( 1002 , vector<int> (1002, -1));
+    
+    return ans(B,A,C,n,t);
+    
+    
+}
+
+
