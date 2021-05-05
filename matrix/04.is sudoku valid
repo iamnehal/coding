@@ -1,0 +1,85 @@
+soln1 tle:
+int rowcheck(vector<vector<int>>mat,int i)
+{ int a[10]={0};
+for(int k=0;k<9;k++)
+{ if(mat[i][k]!=0)
+
+{
+a[mat[i][k]]++;
+if(a[mat[i][k]]>1)
+return 0;
+}   
+}
+return 1;
+
+    
+    
+}
+int colcheck(vector<vector<int>>mat,int j)
+{ int a[10]={0};
+
+
+for(int k=0;k<9;k++)
+{
+    if(mat[k][j]!=0)
+    {
+    a[mat[k][j]]++;
+if(a[mat[k][j]]>1)
+return 0;
+    }
+}
+return 1;
+
+}
+
+int gridcheck(vector<vector<int>>mat,int left,int right,int top,int bottom)
+{
+    int a[10]={0};
+    for(int i=top;i<bottom;i++)
+    {
+        for(int j=left;j<right;j++)
+        {
+            if(mat[i][j]!=0)
+            {
+            
+            a[mat[i][j]]++;
+        if(a[mat[i][j]]>1)
+        return 0;
+            
+        }
+        }
+    }
+        return 1;
+    
+    
+    
+    
+}
+
+
+
+class Solution{
+public:
+    int isValid(vector<vector<int>> mat){
+        for(int i=0;i<9;i++)
+        {
+            if(!(rowcheck(mat,i)))
+            return 0;
+            if(!(colcheck(mat,i)))return 0;
+        }
+        for(int i=0;i<=2;i++)
+        {
+            for(int j=0;j<=2;j++)
+            {
+                if(!(gridcheck(mat,3*i,3*i+3,3*j,3*j+3)))
+                return 0;
+            }
+        }
+    
+    return 1;
+    }
+};
+
+
+
+
