@@ -1,0 +1,60 @@
+
+
+soln 1: in o(n*2) and o(1)
+
+class Solution{
+public:	
+	
+	int countPairs(vector<vector<int>> &mat1, vector<vector<int>> &mat2, int n, int x)
+	{
+	    
+	    int val;
+	    int count=0;
+	    
+	  int row1,col1;
+	  int row2,col2;
+	 row1=0;col1=0;
+	 row2=n-1;col2=n-1;
+	 while(row1<n && row2>=0)
+	 {
+	     val=mat1[row1][col1]+mat2[row2][col2];
+	     
+	     if(val==x)
+	     {col1++;
+	     col2--;
+	     count++;}
+	     else if(val>x)
+	     {
+	         col2--;
+	     }
+	     else if(val<x)
+	     {
+	         col1++;
+	     }
+	     
+	     if(col1>=n)
+	     {
+	         col1=0;
+	         row1++;
+	     }
+	     if(col2<0)
+	     {
+	         col2=n-1;
+	         row2--;
+	     }
+	     
+	   
+	 }
+	 return count;
+	 
+	}
+};
+
+
+
+
+
+
+soln 2 : in o(n*2) and o(n*2)
+
+
