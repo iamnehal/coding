@@ -1,0 +1,61 @@
+soln1////;
+
+video soln :   https://www.youtube.com/watch?v=G5wLN4UweAM&ab_channel=alGOds  
+
+int counter(int mat[MAX][MAX],int n,int x) // this is counter function to count no of elemenet smaller than element in  a matrix .
+{int mid=1;
+    int i=n-1;
+    int j=0; int count=0;
+    while(i>=0 && j<n)
+    { mid=mat[i][j];
+    if(mid<=x)
+    {count=count+i+1;
+    
+    j++;
+    
+    }
+    
+    else if(mid>x)
+     {i--;
+         
+         
+     }   
+        
+    }
+    return count;
+}
+
+int kthSmallest(int mat[MAX][MAX], int n, int k)
+{ int count=0; int ans=0;
+  int mine=mat[0][0]; int mid=0;
+  int maxe=mat[n-1][n-1];
+  while(mine<=maxe)
+  {
+      mid=(mine+maxe)/2;
+      count=counter(mat,n,mid);
+      if(count<k)
+      {
+          mine=mid+1;
+          
+      }
+      else if(count>=k)
+      {
+          ans=mid;
+          maxe=mid-1;
+      }
+      
+      
+      
+  }
+  
+  return ans;
+}
+
+
+
+
+soln 2: 
+
+
+
+
