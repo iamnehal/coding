@@ -1,0 +1,42 @@
+
+ https://www.codingninjas.com/codestudio/problems/common-elements-present-in-all-rows-of-a-matrix_1118111   
+
+#include<bits/stdc++.h>  //this was not present maybe in coding ninja compiler 
+
+vector<int> findCommonElements(vector<vector<int>> &mat)
+{
+    
+  unordered_map<int,int> m;
+    int r=mat.size();
+    int c=mat[0].size();
+    for(int j=0;j<c;j++)
+    { if(m.find(mat[0][j])==m.end())
+    {
+        m.insert(make_pair(mat[0][j],1));
+    }
+    
+    
+    }
+    for(int i=1;i<r;i++)
+    {
+        for(int j=0;j<c;j++)
+        {
+            if(m.find(mat[i][j])!=m.end())
+            {
+                if(m[mat[i][j]]==i)m[mat[i][j]]++;
+                
+            }
+        }
+    } vector<int>v;
+    for(auto x:m)
+    {
+        if(x.second==r)
+            v.push_back(x.first);
+    }
+    
+    
+    
+    
+    
+    return v;
+}
