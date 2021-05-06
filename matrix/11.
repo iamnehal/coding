@@ -1,6 +1,6 @@
 soln1////;
 
-video soln :   https://www.youtube.com/watch?v=G5wLN4UweAM&ab_channel=alGOds  
+video soln :   https://www.youtube.com/watch?v=G5wLN4UweAM&ab_channel=alGOds  https://www.youtube.com/watch?v=dpsp1hP6P-U&ab_channel=ArtificialMinds
 
 int counter(int mat[MAX][MAX],int n,int x) // this is counter function to count no of elemenet smaller than element in  a matrix .
 {int mid=1;
