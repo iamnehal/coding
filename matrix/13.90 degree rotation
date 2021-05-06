@@ -1,0 +1,38 @@
+bhttps://www.youtube.com/watch?v=Y72QeX0Efxw&ab_channel=takeUforward 
+
+
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        
+        int temp=0;
+        int r=matrix.size();
+        int c=matrix[0].size();
+    for(int i=0;i<r;i++)
+    {
+        for(int j=i;j<c;j++)
+        {
+            int temp=matrix[i][j];
+            matrix[i][j]=matrix[j][i];
+            matrix[j][i]=temp;
+        }
+    }
+    int c1,c2;    
+    for(int i=0;i<r;i++)
+    {c1=0;c2=c-1;
+     
+     while(c1<c2)
+     {
+         
+         temp=matrix[i][c1];
+        matrix[i][c1] =matrix[i][c2];
+         matrix[i][c2]=temp;
+         c1++;c2--;
+     }
+    
+        
+    }
+        
+        
+    }
+}; 
