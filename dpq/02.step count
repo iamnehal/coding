@@ -1,0 +1,43 @@
+
+
+sol1: 2^n 
+
+class Solution
+{
+    
+    void solve(int n,int *count)
+    {
+        
+        
+        if(n==0)
+        {
+            (*count)++;
+            return ;
+        }
+        
+        
+        if(n>0)solve(n-1,count);
+        if(n>1) solve(n-2,count);
+        
+        
+    }
+    
+    public:
+    //Function to count number of ways to reach the nth stair.
+    int countWays(int n)
+    {
+        int count=0;
+        solve(n,&count);
+        
+        
+        
+        return count;
+    }
+};
+
+
+
+
+
+
+soln2 : 
