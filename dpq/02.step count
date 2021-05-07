@@ -41,3 +41,29 @@ class Solution
 
 
 soln2 : 
+
+
+class Solution
+{
+    public:
+    //Function to count number of ways to reach the nth stair.
+     int countWays(int n)
+    {long long int sum=0; long long int temp=0;
+        long long int step1=1;
+        long long int step2=0;
+        for(int i=1;i<=n;i++)
+        {
+            sum=(step1%1000000007+step2%1000000007)%1000000007;
+            
+            step2=step1%1000000007;
+            step1=sum%1000000007;
+            
+            
+            
+        }
+        return sum%1000000007;
+    }
+};
+
+
+
