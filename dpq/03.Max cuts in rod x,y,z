@@ -32,3 +32,60 @@ class Solution
          
     }
 };
+
+
+
+soln2: memotization : 
+
+class Solution
+{
+    
+ int max(int a,int b,int c)
+{ int temp=c;
+    if(a>b)
+{
+    if(a>c)temp=a;
+    
+}
+else if(b>c)
+temp=b;
+return temp;
+    
+}
+int ans( int n,int x,int y,int z,int *dp  )
+    {
+        
+          if(n==0)return 0;
+          else if(n<0)return INT_MIN;
+          if(dp[n]!=-1)
+          {
+              return dp[n];
+              
+          }
+          
+          dp[n]= 1+ max( ans(n-x,x,y,z,dp),ans(n-y,x,y,z,dp),ans(n-z,x,y,z,dp) );
+          return dp[n];
+        
+        
+        
+    }
+    
+    
+    
+    public:
+    //Function to find the maximum number of cuts.
+    int maximizeTheCuts(int n, int x, int y, int z)
+    {
+        int dp[n+1];
+        memset(dp,-1,sizeof(dp));
+        int a=ans(n,x,y,z,dp);
+        if(a<0)return 0;
+        return a;
+        
+    }
+};
+
+
+
+
+soln3: dp 
