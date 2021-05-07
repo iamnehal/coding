@@ -1,0 +1,34 @@
+q. 
+
+recursion  https://www.includehelp.com/icp/maximize-the-cut-segments.aspx#:~:text=3%2C%202%20respectively.-,To%20get%20maximum%20cuts%20we%20would%20cut%20in%20segments%20of,problem%20can%20be%20solved%20recursively.&text=You%20can%20check%20for%20example,divisible%20by%20minimum%20segment%20length. :
+ . int max(int a,int b,int c)
+{ int temp=c;
+    if(a>b)
+{
+    if(a>c)temp=a;
+    
+}
+else if(b>c)
+temp=b;
+return temp;
+    
+}
+
+
+
+class Solution
+{
+    public:
+    //Function to find the maximum number of cuts.
+    int maximizeTheCuts(int n, int x, int y, int z)
+    { 
+        if(n<0)return 0;
+     if(n==0)
+     return 0;
+    if(n>0) return (1+ max(maximizeTheCuts(n-x,x,y,z),maximizeTheCuts(n-y,x,y,z),maximizeTheCuts(n-z,x,y,z)));
+     
+
+     
+         
+    }
+};
