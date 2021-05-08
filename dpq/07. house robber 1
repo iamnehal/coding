@@ -1,0 +1,30 @@
+q. 
+https://practice.geeksforgeeks.org/problems/stickler-theif-1587115621/1#
+
+
+soln1:https://www.youtube.com/watch?v=pchOMyPbp0I&t=771s  
+
+class Solution
+{
+    ll solver(ll a[],int i,ll *dp,int n)
+    {
+    if(i>=n)return 0;
+    if(dp[i]!=0)return dp[i];
+    
+    ll itake=a[i]+solver(a,i+2,dp,n);
+    ll idtake=solver(a,i+1,dp,n);
+    dp[i]=max(itake,idtake);
+    return dp[i];
+        
+        
+    }
+    
+    public:
+    //Function to find the maximum money the thief can get.
+    ll FindMaxSum(ll arr[], ll n)
+    {
+        
+        ll dp[n+1]={0};
+       return solver(arr,0, dp ,n);
+    }
+};
