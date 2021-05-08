@@ -62,5 +62,37 @@ public:
 
 
 
-soln2: recursion +memorization
+soln2: single array
+https://trykv.medium.com/how-to-solve-minimum-coin-change-f96a758ccade
+
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+        int i;
+    int dp[amount+1];
+        for(i=0;i<=amount;i++)
+        {
+            dp[i]=INT_MAX-1;
+        }
+        
+        dp[0]=0;
+        
+        for(auto x:coins)
+        {
+            for(i=1;i<=amount;i++)
+            {  
+               if(x<=i) dp[i]=min( dp[i],1+dp[i-x] );
+                
+                
+                
+            }
+        }
+        if(dp[amount]==INT_MAX-1)return -1;
+        else return dp[amount];
+        
+        
+    }
+};
 
