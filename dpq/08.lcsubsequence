@@ -1,0 +1,50 @@
+q.
+
+soln1:class Solution{
+
+
+    public:
+    
+     int lcs(int x, int y, string &s1, string &s2)
+     { static int dp[1001][1001]; 
+        if(x==s1.size()&&y==s2.size()) memset(dp,-1,sizeof(dp));
+         
+          
+        if(x<0 ||y<0 )
+        return 0;
+        
+    if(x==0||y==0)
+    {dp[x][y]=0;
+    return 0;
+    }
+    if(dp[x][y]!=-1)
+    {
+        return dp[x][y];
+    }
+    if(s1[x-1]==s2[y-1])
+    {
+        dp[x][y]=1+lcs(x-1,y-1,s1,s2);
+        return dp[x][y];
+    }
+    else
+    {
+        dp[x][y]=max(lcs(x-1,y,s1,s2),lcs(x,y-1,s1,s2)  );
+        return dp[x][y];
+        
+        
+    }
+    
+         
+         
+         
+     
+    
+    
+    //Function to find the length of longest common subsequence in two strings.
+ 
+    
+    }
+};
+
+
+soln2: 
