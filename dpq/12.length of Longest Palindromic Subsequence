@@ -1,4 +1,4 @@
-q. 
+q. https://leetcode.com/problems/longest-palindromic-subsequence/submissions/
 
 int lcs(string s1,string s2,int m,int n)
 {
