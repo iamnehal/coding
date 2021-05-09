@@ -1,0 +1,45 @@
+q  https://practice.geeksforgeeks.org/problems/rod-cutting0840/1# 
+
+soln1:  aditya verma 2d
+int cutRod(int price[], int n) {
+    int t1,t2;
+    int length[n];
+    for(int i=0;i<n;i++)length[i]=i+1;
+    
+    
+    
+    int dp[n+1][n+1];
+    //memset(dp,0,sizeof(dp));
+    int i,j;
+  for(i=0;i<=n;i++)//length
+    {
+        for(j=0;j<=n;j++)//cuts
+        {
+            if(i==0||j==0)dp[i][j]=0;
+            
+            
+            
+            
+        }
+    }
+    
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=n;j++)
+        {
+            
+            if(i>=length[j-1])
+            {
+                t1=price[j-1]+dp[i-length[j-1]][j];
+                t2=dp[i][j-1];
+                dp[i][j]=max(t1,t2);
+        
+            }
+            else
+            dp[i][j]=dp[i][j-1];
+        
+            
+        }
+    }
+    return dp[n][n];
+}
