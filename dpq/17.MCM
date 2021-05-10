@@ -1,0 +1,50 @@
+q. https://practice.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1#
+
+int dp[101][101];
+
+int solve(int a[],int i,int j,int N)
+{ 
+
+
+    if(i>=j)
+    {dp[i][j]=0;
+    return 0;
+    }
+    
+    if(dp[i][j]!=-1)
+    return dp[i][j];
+    
+    int k;
+    int tempans=0;
+    int minans=INT_MAX;
+    for(k=i;k<j;k++)
+    {
+        tempans=solve(a,i,k,N) + solve(a,k+1,j,N) + a[i-1]*a[k]*a[j];
+        minans=min(tempans,minans);
+    }
+    dp[i][j]=minans;
+    return dp[i][j];
+    
+    
+    
+}
+
+
+
+
+
+
+
+class Solution{
+public:
+    int matrixMultiplication(int N, int arr[])
+    {
+       memset(dp,-1,sizeof(dp));
+    
+    
+    //memset(dp,-1,sizeof(dp));
+    int temp =solve(arr,1,N-1,N);
+    return temp;
+    
+    }
+};
