@@ -1,0 +1,152 @@
+q: https://practice.geeksforgeeks.org/problems/boolean-parenthesization5610/1#
+
+soln : 
+
+int dp[201][201][2];
+
+
+
+int solve(string &s,int i,int j,int find)
+{ if(dp[i][j][find]!=-1)
+{
+    return dp[i][j][find];
+} 
+    
+    if(i>j)
+    { 
+        
+        
+        dp[i][j][find]=0;
+    
+        return 0;
+    }
+    if(i==j)
+    {
+        if(find==0)
+        {
+            if(s[i]=='F')
+          {  dp[i][j][find]=1;}
+            
+            else { dp[i][j][find]=0;}
+            
+            return dp[i][j][find];
+        }
+        else
+        {
+            if(s[i]=='T')
+             {dp[i][j][find]=1;}
+            else { dp[i][j][find]=0;}
+            return dp[i][j][find];
+        }
+        
+        
+    }
+    long long int ans=0;
+   
+    
+    int k=0;
+    for(k=i+1;k<=j-1;k=k+2)
+    { int lt,rt,lf,rf;
+    // if(dp[i][k-1][1]!=-1)lt= dp[i][k-1][1];
+    // else 
+     {
+        lt=solve(s,i,k-1,1);
+        
+       // dp[i][k-1][1]=lt;
+     }  
+     
+     
+     //if(dp[i][k-1][0]!=-1)lf= dp[i][k-1][0];
+    // else 
+     {
+        lf=solve(s,i,k-1,0);
+        
+      //  dp[i][k-1][0]=lf;
+     }  
+     
+     //if(dp[k+1][j][1]!=-1)rt= dp[k+1][j][1];
+     //else 
+     {rt=solve(s,k+1,j,1);
+                // dp[k+1][j][1]=rt; 
+       
+     }  
+      //  if(dp[k+1][j][0]!=-1)rf= dp[k+1][j][0];
+       //  else
+         {
+        rf=solve(s,k+1,j,0);
+        // dp[k+1][j][0]=rf;
+         }
+         
+         
+        if(s[k]=='|')
+        { if(find==1)
+        
+            {ans=ans+ lt*rt +lt*rf +rt*lf;
+        
+        }
+        else     
+        ans=ans+rf*lf;    
+            
+        }
+        else if(s[k]=='&')
+        {
+            if(find==1)
+            ans=ans+rt*lt;
+            else
+            ans=ans+lf*rt +lt*rf +rf*lf;
+            
+            
+        }
+        else if(s[k]=='^')
+        {
+            if(find==1)
+            {
+                ans=ans+ rt*lf +rf*lt;
+            }
+            else 
+            ans=ans+rt*lt +rf*lf;
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    dp[i][j][find]=ans%1003;
+    return dp[i][j][find];
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution{
+public:
+    int countWays(int N, string S){
+        memset(dp,-1,sizeof(dp));
+        
+        return solve(S,0,N-1,1);
+        
+        
+        
+        
+    }
+};
