@@ -1,0 +1,59 @@
+https://www.interviewbit.com/problems/egg-drop-problem/
+
+
+1st soln :tle 
+int dp[101][10001];
+int solve(int i,int j)
+{
+    if(dp[i][j]!=-1)
+    return dp[i][j];
+
+    
+    if(i==1 )
+    {dp[i][j]=j;
+    return j;
+        
+    }
+    
+    if(j==0 ||j==1)
+    {
+        dp[i][j]=j;
+        return j;
+    }
+    int eb,enb;
+    int ans=INT_MIN;
+    int temp=0;
+    int k=0;
+    for(k=1;k<=j;k++)
+    { if(dp[i-1][k-1]!=-1)
+    eb=dp[i-1][k-1];
+    else
+    {
+        eb=solve(i-1,k-1);
+    }
+    if(dp[i][j-k]!=-1)
+    enb=dp[i][j-k];
+    else
+    {
+        enb=solve(i,j-k);
+    }
+    
+    temp=1+max(eb,enb);
+        
+        ans=min(ans,temp);
+    }
+    return ans;
+    
+    
+}
+
+
+
+int Solution::solve(int A, int B) {
+    
+    
+    memset(dp,-1,sizeof(dp));
+    return solve(A,B);
+}
+
+//i==eggs j==floor
