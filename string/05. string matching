@@ -1,0 +1,33 @@
+https://www.interviewbit.com/problems/implement-strstr/ 
+
+
+method 1: 
+int Solution::strStr(const string A, const string B) {
+    if(A=="\0"||B=="\0")return -1;
+    
+    int i,j;
+    i=0;
+    
+    while(A[i]!='\0')
+    {
+        j=0;
+        while(A[i+j]!='\0' && B[j]!='\0' && A[i+j]==B[j])
+        {
+            j++;
+            
+            
+        }
+        if(B[j]=='\0')return i;
+        if(A[j+i]=='\0')return -1;
+        j=0;
+        i++;
+        
+        
+        
+    }return -1;
+}
+
+
+
+
+method 2: KMP 
