@@ -1,0 +1,23 @@
+https://www.interviewbit.com/problems/amazing-subarrays/
+int Solution::solve(string A) {
+    int sum=0;
+    
+    int l=A.length();
+    char x='a';
+    for(int i=0;i<A.length();i++)
+    {
+        x=A[i];
+        
+        if(x=='a' || x=='e' || x=='o' || x=='i' || x=='u' ||x=='A'||x=='I' || x=='O'|| x=='E'||x=='U')
+        { 
+            
+        sum= (sum%10003 + (l-i)%10003)%10003;
+            
+            
+        }
+        
+        
+        
+    }
+    return sum;
+}
