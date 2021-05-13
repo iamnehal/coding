@@ -1,0 +1,35 @@
+https://www.interviewbit.com/problems/reverse-the-string/
+string Solution::solve(string A) {
+    string b="";
+    
+    int i=0;
+    stack<char>s;
+i=A.length()-1;
+while(i>=0)
+{
+    if(A[i]==' ')i--;
+    else
+    {
+        s.push(A[i]);
+        
+        if(i==0||A[i-1]==' ')
+        {
+            if((b.length()!=0))b.push_back(' ');
+            while(s.empty()!=1)
+            {
+                b.push_back(s.top());
+                s.pop();
+            }
+            
+            
+        }
+        
+        i--;
+        
+    }
+    
+    
+    
+}
+return b;
+}
