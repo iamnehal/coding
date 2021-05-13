@@ -1,0 +1,35 @@
+q.https://www.interviewbit.com/problems/length-of-last-word/
+
+soln : soln : int Solution::lengthOfLastWord(const string A) {
+int start,end;    int j,i;
+int check=0;
+j=0;
+    if(A[0]==' ')
+{
+    j=1;
+    
+}
+else
+{
+    start=0;
+}
+while(A[j]!='\0')
+{ 
+    
+    
+    if(A[j-1]==' ' && A[j]!=' ')
+    {start=j;
+    check=1;
+    }
+    
+     if((A[j+1]==' ' || A[j+1]=='\0')&& A[j]!=' ')
+    {end=j;
+    check=1;}
+    j++;
+    
+}
+if(check==0)return 0;
+return (end-start+1);
+    
+    
+}
