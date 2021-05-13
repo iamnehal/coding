@@ -41,4 +41,36 @@ soln1: int Solution::solve(string S) {
 
 
 
-soln 2: 
+soln 2: int solver(string A,int i,int j)
+{
+    while(i<j)
+    {
+        
+        if(A[i]!=A[j])return 0;
+        
+        i++;j--;
+        
+    }
+    return 1;
+}
+
+
+int Solution::solve(string A) {
+    int i,j;
+    i=0;
+    j=A.length()-1;
+    while(i<j)
+    {
+        if(A[i]!=A[j])
+        return(solver(A,i+1,j)||solver(A,i,j-1));
+        
+        i++;j--;
+    }
+    
+    return 1;
+    
+    
+}
+
+
+soln3:
