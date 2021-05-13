@@ -1,0 +1,31 @@
+q: https://www.interviewbit.com/problems/minimum-parantheses/
+int Solution::solve(string A) {
+int count=0;
+    stack<char>s;
+    int i=0;
+    while(A[i]!='\0')
+    {
+        if(A[i]==')')
+        {
+            if(s.empty()==1)
+            {count++;}
+            else 
+            {s.pop();}
+            
+        }
+        else if(A[i]=='(')
+        {
+            s.push('(');
+        }
+        
+        i++;
+        
+        
+        
+    }
+    while(s.empty()!=1)
+    { s.pop();
+        count++;
+    }
+    return count;
+}
