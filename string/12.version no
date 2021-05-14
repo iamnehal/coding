@@ -1,0 +1,48 @@
+q:
+int Solution::compareVersion(string A, string B) {
+    
+int i=0;int j=0;
+unsigned long long a,b;
+a=0;
+b=0;
+
+int m=A.length();
+int n=B.length();
+
+while(1)
+
+{
+    if(i>=m && j>=n)return 0;
+    
+    
+    
+    
+    
+        while(i<m && A[i]!='.')
+        {
+            a=a*10 +(A[i]-'0');
+        i++;
+            
+        }
+    while(j<n && B[j]!='.')
+    {
+        b=b*10 + (B[j]-'0');
+        j++;
+    }
+
+if(a==b){
+    
+    i++;j++;
+    
+}
+else if(a>b)return 1;
+else return -1;
+
+a=-0;b=0;
+        
+    
+    
+    
+    
+}    
+}
