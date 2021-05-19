@@ -1,0 +1,25 @@
+
+#include <iostream>
+#include <string>
+
+
+
+using namespace std;
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	
+string x;
+cin>>x;
+
+int length=x.length();
+int first=x[0]-'0';
+int ans=(first-1)*10 + ((length)*(length+1))/2;
+cout<<ans<<endl;
+
+	}
+	return 0;
+}
