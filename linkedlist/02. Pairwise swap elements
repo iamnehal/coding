@@ -1,0 +1,41 @@
+class Solution
+{
+    public:
+    Node* pairWiseSwap(struct Node* head) 
+    { if(head==NULL||head->next==NULL)return head;
+    
+        struct Node * dummy=new Node(-1);
+        struct Node* first=head;
+        struct Node* second=head->next;
+        
+        
+        struct Node* prv=dummy;
+        
+        
+        
+        while(first!=NULL && second!=NULL )
+        {
+      
+        first->next=second->next;
+          prv->next=second;
+          second->next=first;
+          
+          if(first->next==NULL)
+          {
+              break;
+          }
+          else
+          {
+              second=(first->next)->next;
+              prv=first;
+              first=first->next;
+          }
+        
+        }
+        return dummy->next;
+        
+        
+        
+        
+    }
+};
