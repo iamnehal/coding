@@ -1,0 +1,105 @@
+class Solution{
+  public:
+    /* The below method print the required sum of polynomial
+    p1 and p2 as specified in output  */
+    Node* addPolynomial(Node *p1, Node *p2)
+    {
+    
+    struct Node* temp;
+    struct Node* first=p1;
+    struct Node* second=p2;
+    struct Node* ans;
+    int x,y;
+    ans=NULL;
+    temp=NULL;
+    
+    
+    while(first!=NULL && second!=NULL)
+    {x=first->pow;
+    y=second->pow;
+    
+        
+        
+        if(x>y)
+        {
+            
+            if(ans!=NULL)
+            {
+                temp->next=first;
+                temp=first;
+                
+                
+            }
+            
+            else
+            {
+                ans=first;
+                temp=first;
+                
+            }
+            first=first->next;
+        }
+        
+        else if(y>x)
+        { 
+            if(ans!=NULL)
+            {
+                temp->next=second;
+                temp=second;
+                
+                
+            }
+            
+            else
+            {
+                ans=second;
+                temp=second;
+                
+            }
+            second=second->next;
+            
+        }
+        else //x=y
+        {
+            
+            first->coeff=first->coeff+second->coeff;
+            if(ans!=NULL)
+            {
+                temp->next=first;
+                temp=first;
+                
+                
+            }
+            else
+            {ans=first;
+                temp=first;
+            
+            }
+            first=first->next;
+            second=second->next;
+            
+            
+        }
+        
+    }
+    
+    if(first==NULL && second==NULL)
+    {
+        return ans;
+    }
+    else if(first==NULL)
+    {
+        temp->next=second;
+    return ans;    
+    }
+    else
+    {
+        temp->next=first;
+        return ans;
+    }
+    
+    
+    
+    
+    }
+};
