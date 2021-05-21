@@ -1,0 +1,55 @@
+vido: aman dhatarwal : 
+https://www.youtube.com/watch?v=8CACsqPWpHo&ab_channel=ApnaCollege
+int intersectPoint(Node* head1, Node* head2)
+{ 
+    Node* temp=head1;
+    int count1=0;
+    while(temp!=NULL)
+    { temp=temp->next;
+    count1++;
+        
+    }
+    int count2=0;
+    temp=head2;
+     while(temp!=NULL)
+    { temp=temp->next;
+    count2++;
+        
+    }
+    Node* tempb;
+    int transverse=0;
+    if(count1>count2)
+   { transverse=count1-count2;
+    tempb=head1;
+    temp=head2;
+    
+   }
+
+else
+{
+      transverse=count2-count1;
+    tempb=head2;
+    temp=head1;
+ 
+}
+
+ while(transverse--)
+    {  
+        tempb=tempb->next;
+       if(tempb==NULL)return -1; 
+    }
+    while( tempb!=NULL && temp!=NULL)
+    { if(tempb==temp)
+    {
+        return temp->data;
+    }
+    
+        tempb=tempb->next;
+        temp=temp->next;
+    }
+   
+    return -1;
+ 
+    
+    
+}
