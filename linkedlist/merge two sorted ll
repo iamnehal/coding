@@ -1,0 +1,57 @@
+
+
+video soln: https://www.youtube.com/watch?v=n5_9DMCX0Yk
+code
+
+struct Node* SortedMerge(struct Node* a, struct Node* b)
+{
+    
+    struct Node* h1=a;
+    struct Node* h2=b;
+    struct Node* dummy=(struct Node*)malloc(sizeof(struct Node*));//this is sometimes need to be done if new node function is  not working
+    //this is dyanmic memory allocation for a pointer 
+    //here memory with size stuct node just like size of int is denoted to 
+    //a integer pointer is donated to this dummy vairable
+    struct Node* h3=dummy;
+    //here a faster check is needed in case of a null head 
+    
+    if(h1==NULL)return b;
+    if(h2==NULL)return a;
+    
+    while(h1!=NULL && h2!=NULL)
+    {
+        if(h1->data<h2->data)
+        {
+            h3->next=h1;
+            h1=h1->next;
+        }
+        else
+        {
+            h3->next=h2;
+            h2=h2->next;
+        }
+        
+        h3=h3->next;
+    }
+    
+    while(h1!=NULL)
+    { h3->next=h1;
+    h1=h1->next;
+    h3=h3->next;
+        
+    }
+     while(h1!=NULL)
+    { h3->next=h1;
+    h1=h1->next;
+    h3=h3->next;
+        
+    }
+     while(h2!=NULL)
+    { h3->next=h2;
+    h2=h2->next;
+    h3=h3->next;
+        
+    }
+    
+    return dummy->next;
+}
