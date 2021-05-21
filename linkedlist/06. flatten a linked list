@@ -1,0 +1,42 @@
+https://www.youtube.com/watch?v=ysytSSXpAI0&ab_channel=takeUforwardtakeUforward
+
+
+ Node* merge(Node* h1,Node* h2)
+    {
+        Node* dummy=new Node(-1);
+        Node* res=dummy;
+        while(h1!=NULL && h2!=NULL)
+        {
+            if(h1->data<h2->data)
+            {
+                dummy->bottom=h1;
+                h1=h1->bottom;
+                dummy=dummy->bottom;
+            }
+            else
+            {
+                dummy->bottom=h2;
+                h2=h2->bottom;
+                dummy=dummy->bottom;
+                
+            }
+            
+        }
+        
+        if(h1)dummy->bottom=h1;
+        if(h2)dummy->bottom=h2;
+        
+        return res->bottom;
+        
+    }
+    
+    
+Node *flatten(Node *root)
+{if(root==NULL || root->next==NULL)return root;
+
+root->next=flatten(root->next);
+root=merge(root,root->next);
+   return root;
+   
+   
+}
