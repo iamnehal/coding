@@ -1,0 +1,41 @@
+struct Node* ans(struct Node* head)
+{
+    
+    if(head==NULL && head->next==NULL)return head;
+    struct Node* temp=head;
+    struct Node* res=head->next;
+    while(res!=NULL)
+    {
+        while(res->next!=NULL && (res)->data==temp->data)
+        { res=res->next;
+            
+        }
+        if(res->next==NULL)
+    {
+        if(temp->data==res->data)
+        {temp->next=NULL;
+        res=res->next;
+        }else
+        {
+           
+            temp->next=res;
+             res=res->next;
+        }
+    }
+        if(res!=NULL)
+        {
+        temp->next=res;
+        temp=res;
+        res=res->next;
+    }
+    
+    
+    }
+return head;
+}
+
+
+void removeDuplicates(struct Node* head)
+{ head=ans(head);
+    
+}
