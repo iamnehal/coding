@@ -1,4 +1,5 @@
-https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1  
+https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1      
+This is for conneected graph won't get accepted
 
 	vector<int>bfsOfGraph(int n, vector<int> a[]){
 	    
@@ -26,3 +27,53 @@ return ans;
 
 	    
 	}
+
+
+
+for disconnected graph also   : read article here https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/   
+go down and see modifed version vaisa hoga 
+
+class Solution
+{
+    public:
+    //Function to return Breadth First Traversal of given graph.
+	vector<int>bfsOfGraph(int V, vector<int> a[])
+	{
+	    
+	  
+	        
+	    
+	    bool v[V];
+queue<int> q;
+vector<int> ans;
+  for(int i=0;i<V;i++)
+	    {
+
+if(v[i]==0)
+{
+    q.push(i); int cur=0;
+
+
+
+while(!q.empty())
+{
+cur=q.front();
+q.pop();
+ans.push_back(cur);
+for(int i=0;i<a[cur].size();i++)
+{
+    if(!(v[a[cur][i]]))
+    {
+q.push(a[cur][i]);
+v[a[cur][i]]=true;
+    }
+}
+
+}
+}
+return ans;
+
+	    
+	    }
+	}
+};
