@@ -1,4 +1,63 @@
 https://code.hackerearth.com/problem/algorithm/connected-components-in-a-graph/
+utube pe soln mil jaega 
+bfs soln: 
+#include <bits/stdc++.h>
+using namespace std;
+
+void bfs(vector<int> a[],bool *vis,queue<int> q,int node)
+{ q.push(node);
+//vis[node]=1;
+
+while(q.empty()==0)
+{ node=q.front();
+q.pop();
+
+for(auto x:a[node])
+{ if(vis[x]==0)
+{vis[x]=1;
+    q.push(x);
+
+}
+
+
+}
+}return;
+
+
+}
+
+int main()
+{
+    int n,e;
+    cin>>n>>e;
+    vector<int> a[n+1];
+    for(int i=0;i<e;i++)
+    {
+        int u,v;
+        cin>>u>>v;
+        a[u].push_back(v);
+        a[v].push_back(u);
+    }
+bool vis[n+1]={0};
+int count=0;
+queue<int>q;
+
+    for(int i=1;i<=n;i++)
+    { if(vis[i]==0)
+    { count++;
+        bfs(a,vis,q,i);
+    }
+    }
+    cout<<count;
+return 0;
+    }
+
+    
+*****************************************************
+DFS SOLN:
+
+
+
 
 #include <bits/stdc++.h>
 using namespace std;
