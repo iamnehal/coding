@@ -1,0 +1,55 @@
+q: https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1#
+
+soln1: 
+bool dfscycle(vector<int> adj[],bool *vis,int child,int parent)
+{
+    vis[child]=1;
+    
+    for(auto x:adj[child])
+    {
+        if(vis[x]==0)
+        {
+            if(dfscycle(adj,vis,x,child))return true;
+            
+        }
+        else //vis[x]==1
+        { //matlab already visit ho gya to cycle ho skta
+        //parent wala check karenge
+        if(x!=parent)return true;//agar parent nahi to cycle hi hoga 
+        //undirected main
+            
+            
+        }
+        
+        
+        
+        
+    }
+    return false;
+    
+    
+    
+}
+
+class Solution 
+{
+    public:
+    //Function to detect cycle in an undirected graph.
+	bool isCycle(int V, vector<int>adj[])
+	{
+	     bool vis[V]={0};
+	    int i=0;
+	    int parent=-1;//0 hmne source mann lia uska koi parent nahi
+	    
+	    for(i=0;i<V;i++)
+	    {
+	        if(vis[i]==0)//unvisited
+	        {
+	            if(dfscycle(adj,vis,i,parent))
+	          {  return true;
+	          }
+	        }
+	    }
+	    return false;
+	}
+};
