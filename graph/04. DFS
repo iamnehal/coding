@@ -1,6 +1,9 @@
 https://www.youtube.com/watch?v=CvUMf8c2JFo&list=PLEJXowNB4kPzByLnnFYNSCoqtFz0VKLk5&index=3&ab_channel=TECHDOSE
 
-
+ yeh accept nahhi hoga..only for connected graphs... 
+ 
+ 
+ disconenected niche hai...usme loop laga ke sbpe check karna hoga
 void dfs(vector<int>adj[],int s,vector<int> &vis,vector<int> &ans)
 	{
 	    
@@ -26,6 +29,53 @@ void dfs(vector<int>adj[],int s,vector<int> &vis,vector<int> &ans)
 	  return ans;
 	}
 };
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+This is soln for disconnected also ... 
+
+void dfs(vector<int>a[],bool *v,vector<int> &ans,int node)
+{
+    v[node]=1;
+    ans.push_back(node);
+    
+    for(auto x:a[node])
+    {
+        if(v[x]==0)
+        {
+            dfs(a,v,ans,x);
+            
+            
+        }
+        
+    }
+   
+    return ;
+    
+    
+}
+
+class Solution 
+{
+    public:
+	//Function to return a list containing the DFS traversal of the graph.
+	vector<int>dfsOfGraph(int V, vector<int> adj[])
+	{
+	   bool vis[V];
+	   vector<int>ans;
+	   int i=0;
+	   for(i=0;i<V;i++)
+	   { if(vis[i]==0)
+	   {
+	   dfs(adj,vis,ans,i);
+	   }
+	   }
+	   return ans;
+	}
+};
+
+
+
+
 
 
 
