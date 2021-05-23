@@ -1,0 +1,35 @@
+https://practice.geeksforgeeks.org/problems/cutted-segments1642/1#
+
+int dp[10001];
+
+int ans(int n,int x,int y,int z)
+{
+    if(n==0)return 0;
+    if(n<0)return INT_MIN;
+    
+    if(dp[n]!=-1)return dp[n];
+    
+    dp[n]=max(ans( n-x,x,y,z),max(ans(n-y,x,y,z),ans(n-z,x,y,z)))+1;
+    return dp[n];
+    
+    
+    
+}
+
+
+class Solution
+{
+    public:
+    //Function to find the maximum number of cuts.
+    int maximizeTheCuts(int n, int x, int y, int z)
+    {
+        
+memset(dp,-1,sizeof(dp));
+int temp=ans(n,x,y,z);
+if(temp<0)return 0;
+return temp;
+        
+        
+        
+    }
+};
