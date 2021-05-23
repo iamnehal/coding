@@ -1,0 +1,14 @@
+int maxSubarraySum(int arr[], int n){
+        
+        int maxsofar=arr[0];
+        int maxf=arr[0];
+        for(int i=1;i<n;i++)
+        {
+            maxsofar=max(maxsofar+arr[i],arr[i]);
+            maxf=max(maxsofar,maxf);
+            
+        }
+        return maxf;
+    
+        
+    }
