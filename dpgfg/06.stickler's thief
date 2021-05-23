@@ -1,0 +1,24 @@
+ll dp[10001];
+
+ll solve(int a[],int n)
+{
+    if(n<0)return 0;
+    if(dp[n]!=0)return dp[n];
+    
+    dp[n]=max(solve(a,n-1),solve(a,n-2)+a[n]);
+    return dp[n];
+    
+    
+    
+}
+class Solution
+{
+    public:
+    //Function to find the maximum money the thief can get.
+    int FindMaxSum(int arr[], int n)
+    {
+        memset(dp,0,sizeof(dp));
+    ll ans=solve(arr,n-1);
+        return ans;
+    }
+};
