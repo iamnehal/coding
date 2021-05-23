@@ -1,0 +1,72 @@
+
+
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+        
+        int sum=amount;
+        int n=coins.size();
+        int dp[sum+1];
+        int i,j;
+        for(i=1;i<=sum;i++)dp[i]=INT_MAX-1;
+        dp[0]=0;
+        for(i=1;i<=sum;i++)
+        {
+            
+            for(j=0;j<n;j++)
+            {
+                if(coins[j]<=i)
+                {
+                    dp[i]=min( dp[i-coins[j]]+1, dp[i] );
+                    
+                }
+                
+                
+            }
+            
+        }
+        if(dp[sum]==INT_MAX-1)return -1;
+        return dp[sum];
+        
+    }
+};
+
+
+
+
+
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        
+        
+        int sum=amount;
+        int n=coins.size();
+        int dp[sum+1];
+        int i,j;
+        for(i=1;i<=sum;i++)dp[i]=INT_MAX;
+        dp[0]=0;
+        for(i=1;i<=sum;i++)
+        {
+            
+            for(j=0;j<n;j++)
+            {
+                if(coins[j]<=i)
+                { if(dp[i-coins[j]]!=INT_MAX)
+                    dp[i]=min( dp[i-coins[j]]+1, dp[i] );
+                   // else
+                        //dp[i]=dp[i];
+                }
+                
+                
+            }
+            
+        }
+        if(dp[sum]==INT_MAX)return -1;
+        return dp[sum];
+        
+    }
+};
