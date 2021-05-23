@@ -1,0 +1,31 @@
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int dp[100][100];
+int solve(int a[],int beg,int end,int year)
+{ if(beg>end)return 0;
+if(dp[beg][end]!=-1)return dp[beg][end];
+
+int l=a[beg]*year +solve(a,beg+1,end,year+1);
+int r=a[end]*year+solve(a,beg,end-1,year+1);
+dp[beg][end]=max(l,r);
+
+return dp[beg][end];    
+}
+
+
+int main() {
+   int n;
+   cin>>n;//size of std::array<, N> ;
+   int i;
+   int a[n];
+   memset(dp,-1,sizeof(dp));
+   for(i=0;i<n;i++)cin>>a[i];
+  int ans=solve(a,0,n-1,1);
+  cout<<ans;
+	return 0;
+}
+
