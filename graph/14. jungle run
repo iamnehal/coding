@@ -1,0 +1,111 @@
+https://www.youtube.com/watch?v=8g95BQZwapA&list=PL2q4fbVm1Ik6DCzm9XZJbNwyHtHGclcEh&index=36&ab_channel=CodeNCodeCodeNCode
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+  vector<vector<int>>dist(31,vector<int>(31,0));
+    vector<vector<int>>vis(31,vector<int>(31,0));
+
+int dx[4]={-1,0,1,0 };
+int dy[4]={0,1,0,-1};
+
+
+  bool isvalid(vector<vector<char>>&grid,int x,int y)
+{
+
+if(x<0 || x>=grid.size()||y<0||y>=grid[0].size())return false;
+if(grid[x][y]=='T')return false;
+
+if(vis[x][y]==1)return false;
+
+return true;
+
+
+
+}
+
+
+void bfs( vector<vector<char>>grid,int x,int y)
+{
+ queue<pair<int,int>>q;
+ 
+ q.push(make_pair(x,y));
+
+  dist[x][y]=0;
+  vis[x][y]=1;
+
+   while(q.empty()==0)
+   {
+      int tx=q.front().first;
+      int ty=q.front().second;
+      int d=dist[tx][ty];
+      q.pop();
+
+      for(int i=0;i<4;i++)
+      {
+
+         int newx=tx+dx[i];
+         int newy=ty+dy[i];
+ if(isvalid(grid,newx,newy))
+ {
+    dist[newx][newy]=d+1;
+    vis[newx][newy]=1;
+    q.push(make_pair(newx,newy));
+
+
+ }
+
+      }
+
+
+
+   }
+}
+
+
+
+
+int main()
+{
+
+
+       int n;cin>>n;
+       
+       vector<vector<char>>grid(n,vector<char>(n,'T'));
+ 
+
+int i=0;
+int j=0;
+int xstart,ystart,xend,yend;
+
+
+
+
+
+for(i=0;i<n;i++)
+{
+    for(j=0;j<n;j++)
+    {
+        cin>>grid[i][j];
+        if(grid[i][j]=='S')
+        {
+            xstart=i;ystart=j;
+        }
+        if(grid[i][j]=='E')
+        {
+            xend=i;yend=j;
+        }
+    }
+}
+
+bfs(grid,xstart,ystart);
+cout<<dist[xend][yend];
+
+
+
+return 0;
+
+
+}
