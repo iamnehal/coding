@@ -1,1 +1,48 @@
 
+bool dfs(vector<int> a[],stack<int> &s,bool *vis,int index)
+{
+    vis[index]=1;
+    for(auto x:a[index])
+    {
+        if(vis[x]==0)
+        {
+            dfs(a,s,vis,x);
+            
+        }
+        
+        
+    }
+    s.push(index);
+    
+    
+    
+}
+
+class Solution
+{
+	public:
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	   
+	   stack<int> s;
+	   bool vis[V]={0};
+	   int i=0;
+	   for(i=0;i<V;i++)
+	   {
+	       if(vis[i]==0)
+	       {
+	           dfs(adj,s,vis,i);
+	       }
+	       
+	   }
+	   vector<int>ans;
+	   while(s.empty()==0)
+	   {
+	       ans.push_back(s.top());
+	       s.pop();
+	       
+	   }
+	 return ans;  
+	}
+};
