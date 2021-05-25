@@ -1,0 +1,67 @@
+bool dfs(vector<int> a[],vector<int> &vis,vector<int> &color,int index,int colornode)
+    {
+        vis[index]=1;
+        color[index]=colornode;
+        
+        
+        for(auto x:a[index])
+        {
+            if(vis[x]==0)
+            {
+                if(dfs(a,vis,color,x,!colornode))
+                return true;
+                
+            }
+            else
+            {
+                if(color[index]==color[x])
+                return true;
+            }
+            
+            
+        }
+        return false;
+        
+        
+        
+    }
+    
+
+
+
+class Solution {
+    
+    
+    
+public:
+
+
+
+
+	bool isBipartite(int V, vector<int>adj[]){
+	    
+	
+	 
+	 
+	   vector<int>vis(V,0);
+	   vector<int>color(V,-1);
+	
+	 
+	 for(int i=0;i<V;i++)
+	 
+	 {
+	     if(vis[i]==0)
+	     
+	 {
+	     
+	      if(dfs(adj,vis,color,i,0))
+	      return false;
+	 }
+	     
+	 }
+	 
+	    return true;
+	    
+	}
+
+};
