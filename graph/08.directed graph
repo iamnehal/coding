@@ -1,0 +1,50 @@
+bool iscycle(vector<int> adj[],bool *vis,bool *stack,int index)
+{ 
+    stack[index]=1;
+vis[index]=1;
+for(auto i:adj[index])
+{
+     if(vis[i]==0)
+     {
+         if(iscycle(adj,vis,stack,i))return true;
+         
+         
+     }
+     else //vis[i]=1;
+     {
+         if(stack[i]==1)return true;
+         
+     }
+    
+}
+stack[index]=0;
+   return false; 
+    
+    
+    
+}
+
+class Solution
+{
+    public:
+	//Function to detect cycle in a directed graph.
+	bool isCyclic(int V, vector<int> adj[]) 
+	{
+	   	bool vis[V]={0};
+	   	bool stack[V]={0};
+	   	int i=0;
+	   	for(i=0;i<V;i++)
+	   	{
+	   	    
+	   	    if(vis[i]==0)
+	   	    {
+	   	        if(iscycle(adj,vis,stack,i))return true;
+	   	        
+	   	        
+	   	    }
+	   	}
+	   	
+	   	return false;
+	   	
+	}
+};
