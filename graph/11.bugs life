@@ -1,0 +1,111 @@
+https://www.spoj.com/problems/BUGLIFE/
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+bool dfs(vector<int> a[],vector<int> &vis,vector<int> &color,int index,int colornode)
+    {
+        vis[index]=1;
+        color[index]=colornode;
+        
+        
+        for(auto x:a[index])
+        {
+            if(vis[x]==0)
+            {
+                if(dfs(a,vis,color,x,!colornode))
+                return true;
+                
+            }
+            else
+            {
+                if(color[index]==color[x])
+                return true;
+            }
+            
+            
+        }
+        return false;
+        
+        
+        
+    }
+    
+
+
+
+
+
+
+
+	bool bipartite(int V, vector<int>adj[]){
+	    
+	
+	 
+	 
+	   vector<int>vis(V+1,0);
+	   vector<int>color(V+1,-1);
+	
+	 
+	 for(int i=1;i<=V;i++)
+	 
+	 {
+	     if(vis[i]==0)
+	     
+	 {
+	     
+	      if(dfs(adj,vis,color,i,0))
+	      return false;
+	 }
+	     
+	 }
+	 
+	    return true;
+	    
+	}
+
+
+
+
+int main() {
+int t;
+cin>>t;
+for(int j=1;j<=t;j++)
+{
+	
+	int e;
+	cin>>e;
+	int o;cin>>o;
+	int u,v;
+	vector<int>adj[e+1];
+	for(int i=0;i<o;i++)
+	{
+		cin>>u>>v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+		
+		
+	}
+	
+	if(!bipartite(e,adj))
+	{
+		cout<<"Scenario #"<<j<<":"<<endl;
+		
+cout<<"Suspicious bugs found!"<<endl;
+	}
+	else
+	{
+		cout<<"Scenario #"<<j<<":"<<endl;
+		
+cout<<"No suspicious bugs found!"<<endl;
+	}
+	
+	
+}
+
+
+
+	return 0;
+}
