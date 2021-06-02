@@ -1,0 +1,43 @@
+https://practice.geeksforgeeks.org/problems/in-first-but-second5423/1
+
+
+class Solution{
+	
+	
+	public:
+	vector<long long> findMissing(long long A[], long long B[],  
+                 int N, int M) 
+	{ long long x=0;
+	    unordered_map<long long,int>m;
+	    for(int i=0;i<M;i++)
+	    {x=B[i];
+	        if(m.find(x)==m.end())
+	        {
+	            m.insert({x,1});
+	            
+	        }
+	        else
+	        {
+	            m[x]++;
+	        }
+	        
+	        
+	    }
+	    
+	    
+	    vector<long long>ans;
+	    for(int i=0;i<N;i++)
+	{
+	    x=A[i];
+	    
+	    if(m.find(x)==m.end())
+	    ans.push_back(x);
+	   
+	}
+	    
+	    
+	    return ans;
+	    
+	    // Your code goes here
+	} 
+};
