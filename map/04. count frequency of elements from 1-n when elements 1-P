@@ -1,0 +1,43 @@
+https://practice.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/1#
+
+
+
+class Solution{
+    public:
+    //Function to count the frequency of all elements from 1 to N in the array.
+    void frequencyCount(vector<int>& arr,int N, int P)
+    { 
+        
+        
+        map<int,int> m;
+        
+        
+        int i=0;
+        for(i=1;i<=N;i++)
+        {
+        
+            m.insert(make_pair(i,0));
+            
+            
+        }
+        int x=0;
+        for(i=0;i<N;i++)
+        {x=arr[i];
+            if(m.find(x)!=m.end())
+            {
+                m[x]++;
+            }
+            
+            
+        } i=0;
+        for(auto y:m)
+        {
+            arr[i]=y.second;
+            i++;
+            
+            
+        }
+        
+        
+    }
+};
