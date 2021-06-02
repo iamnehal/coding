@@ -1,0 +1,53 @@
+https://practice.geeksforgeeks.org/problems/find-distinct-elements2054/1#
+
+isme dhyan do ki row main ho skta koi element ek se jyada baar aye to n se exceed kar jaega
+and 
+ki ek hi chiz ko barbar mat dalo map main
+
+
+class Solution{
+public:
+    int distinct(vector<vector<int>> M, int N)
+    {
+        int x=0;
+        
+        unordered_map<int ,int> m;
+        for( int i=0;i<N;i++)
+        { if(m.find(M[0][i])==m.end())
+        {
+            m.insert({M[0][i],1});
+        }
+        }
+        
+        for(int i=1;i<N;i++)
+        {
+            for(int j=0;j<N;j++)
+            {
+              x=M[i][j];  
+                
+                
+                if(m.find(x)!=m.end() && m[x]==i)
+                {
+                    m[x]++;
+                    
+                }
+                
+                
+                
+            }
+            
+            
+        } int count=0;
+    
+    
+        
+       for(auto y:m)
+       {
+           if(y.second==N)count++;
+           
+       }
+        
+        return count;
+        
+    }
+};
