@@ -1,0 +1,52 @@
+
+https://practice.geeksforgeeks.org/problems/nuts-and-bolts-problem0431/1#
+Creating map results in sorting of element in sorted order.here they are sorted by ascii value
+
+
+class Solution{
+public:	
+
+	void matchPairs(char nuts[], char bolts[], int n) {
+	    
+	    
+	    map<char,int>m;
+	    
+	    
+	    m.insert({ '!',1   });
+	    m.insert({'#',1});
+	   
+	    m.insert({'$',1});
+	    m.insert({'%',1});
+	    m.insert({'&',1});
+	    m.insert({'*',1});
+	    m.insert({'@',1});
+	    m.insert({'^',1});
+	     m.insert({'~',1});
+	      m.insert({'.',1});
+	      
+	      
+	      int i=0;
+	    for( i=0;i<n;i++)
+	    {
+	        m[nuts[i]]++;
+	        
+	        
+	    }
+	    i=0;
+	    for(auto y:m)
+	    {
+	        if(y.second>1)
+	        { nuts[i]=bolts[i]=y.first;
+	        i++;
+	            
+	        }
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	}
+
+};
