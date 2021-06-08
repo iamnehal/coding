@@ -45,3 +45,39 @@ for(i=1;i<=x;i++)
 		}
 
 };
+
+
+
+****************** for printing
+
+string res = "";
+
+	// Traverse dp[][] from bottom right
+	int i = n, j = n;
+	while (i > 0 && j > 0)
+	{
+		// If this cell is same as diagonally
+		// adjacent cell just above it, then
+		// same characters are present at
+		// str[i-1] and str[j-1]. Append any
+		// of them to result.
+		if (str[i-1]==str[j-1] && i!=j)
+		{
+		res = res + str[i-1];
+		i--;
+		j--;
+		}
+
+		// Otherwise we move to the side
+		// that that gave us maximum result
+		else if (dp[i-1][j]>dp[i][j-1])
+			i--;
+		else
+			j--;
+	}
+
+	// Since we traverse dp[][] from bottom,
+	// we get result in reverse order.
+	reverse(res.begin(), res.end());
+
+	return res;
