@@ -24,3 +24,31 @@ public:
         
     }
 };
+
+
+itrative in o(n)
+vector<int> preorderTraversal(TreeNode* temp) {
+        
+            
+        vector<int>v;//to store my elements
+        stack<TreeNode*>s;
+        if(temp==NULL)return v;
+        //in place of recursive stack
+       // v.push_back(root->val);
+        s.push(temp);
+        TreeNode *root=NULL;
+        while(s.empty()!=1)
+        {
+            root=s.top();
+            
+            v.push_back(root->val);   
+            s.pop();
+       
+            if(root->right!=NULL)s.push(root->right);
+            if((root->left)!=NULL) s.push(root->left);
+            }
+        
+        return v;
+        
+        
+    }
