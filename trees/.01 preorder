@@ -52,3 +52,40 @@ vector<int> preorderTraversal(TreeNode* temp) {
         
         
     }
+    
+    
+    **********
+    in o(height)
+    class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+  
+        stack<TreeNode*>s;
+        vector<int>v;
+              if(root==NULL)return v;
+       // s.push(root);
+        TreeNode* temp=root;
+        while(s.empty()!=1 || temp!=NULL)
+        {
+            while(temp!=NULL)
+            { s.push(temp);
+               temp= temp->left;
+            }
+            
+            if(s.empty()!=1)
+            {
+                temp=s.top();
+                s.pop();
+                v.push_back(temp->val);
+                temp=temp->right;
+                
+                
+            }
+            
+            
+        }
+        
+        return v;
+        
+    }
+};
