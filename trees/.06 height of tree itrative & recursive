@@ -1,0 +1,36 @@
+itrative : 
+int maxDepth(TreeNode* root) {
+        if(root==NULL)return 0;
+        queue<TreeNode*>q;
+        int count=0;
+        q.push(root);
+        while(q.size()!=0)
+        {
+            
+            int size=q.size();
+            
+            while(size>0)
+            { root=q.front();
+                                q.pop();
+                if(root->left)q.push(root->left);
+                if(root->right)q.push(root->right);
+                
+
+                size--;
+            }
+            
+            count++;
+            
+        }
+        
+        return count;
+        
+        
+        
+    }
+    
+    
+    reucursive:
+    if(root==NULL)return 0;
+    return max(solve(root->left),solve(root->right))+1;
+    
