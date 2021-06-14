@@ -1,0 +1,47 @@
+recursive: 
+ 
+ void solve(TreeNode* root,vector<int>&v)
+ {
+ if(root)return;
+ solve(root->left,v);
+ solve(root->right,v);
+ v.push_back(root->val);
+ return ;
+ }
+ 
+ 
+ }
+ 
+ 
+
+
+
+itrative: 
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        TreeNode* temp=NULL;
+        stack<TreeNode*>s;
+        vector<int>v;
+    if(root==NULL)return v;
+        s.push(root);
+        while(s.size()!=0)
+        {
+            temp=s.top();
+          
+s.pop(); v.push_back(temp->val);
+       
+  if(temp->left!=NULL)s.push(temp->left);
+ 
+    if(temp->right!=NULL)s.push(temp->right);
+
+
+}
+
+
+reverse(v.begin(),v.end());
+return v;
+ 
+        
+    }
+};
