@@ -1,0 +1,32 @@
+https://leetcode.com/problems/find-largest-value-in-each-tree-row/submissions/
+class Solution {
+public:
+    vector<int> largestValues(TreeNode* root) {
+        
+        //int maxv=0;
+        queue<TreeNode*>q;
+        vector<int>v;
+        if(root==NULL)return v;
+        q.push(root);
+        while(q.size())
+        { int size=q.size();
+         int maxv=INT_MIN;
+         while(size--)
+         {
+             root=q.front();
+             q.pop();
+             maxv=max(root->val,maxv);
+             
+             if(root->left)q.push(root->left);
+             if(root->right)q.push(root->right);
+             
+         }
+         v.push_back(maxv);
+            
+            
+            
+        }
+        return v;
+        
+    }
+};
