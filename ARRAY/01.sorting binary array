@@ -1,4 +1,4 @@
-
+https://practice.geeksforgeeks.org/problems/binary-array-sorting-1587115620/1#
 void binSort(int A[], int N)
     {
        int i=0,j=N-1;
