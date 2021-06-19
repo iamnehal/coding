@@ -49,4 +49,44 @@ ans=max(ans,maxp);
 return ans;
 }
 
+soln2: new
+
+
+int Solution::solve(vector<vector<int> > &A) {
+
+vector<int>s1;
+vector<int>d1;
+int r=A.size();
+int c=2;
+int i;
+for(i=0;i<r;i++)
+{
+s1.push_back(A[i][0]);
+d1.push_back(A[i][1]);
+}
+sort(s1.begin(),s1.end());
+sort(d1.begin(),d1.end());
+int j=0;
+i=1;
+int count=1;
+int needed=1;
+while(i<r && j<r)
+{
+ if(s1[i]<d1[j])
+ {
+     count++;
+     needed=max(needed,count);
+     i++;
+ }
+ else //s1[i]>=d1[j]
+ { 
+  j++;
+  count--;
+  
+ }
+
+
+}
+return needed;
+}
 
