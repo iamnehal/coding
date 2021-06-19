@@ -1,5 +1,58 @@
 https://practice.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1#
 
+new soln : 
+ vector<int> minPartition(int N)
+    {
+        
+        int a[]={ 1, 2, 5, 10, 20, 50, 100, 200, 500, 2000 } ;
+        int starter=9;
+        vector<int>ans;
+        //no of coins we have is 10
+int count=0;
+int i;
+    while(N!=0)
+    {
+        
+        for(i=starter;i>=0;i--)
+        {
+            if(a[i]<=N)
+            {
+                N=N-a[i];
+                starter=i;
+                ans.push_back(a[i]);
+       
+                break;
+            }
+            
+        }
+        
+        
+        
+    }
+    return ans;
+        
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+old soln: 
+
+
+
 int binary(int a[],int x,int low,int high)
     { int mid=0;
     
