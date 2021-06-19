@@ -1,0 +1,33 @@
+https://www.interviewbit.com/problems/sort-array-with-squares/
+vector<int> Solution::solve(vector<int> &A) {
+int i,j;
+vector<int>ans;
+i=0;j=A.size()-1;
+int a,b;
+ 
+ 
+int k=0;
+int n=A.size();
+while(i<=j)
+ 
+{
+a=pow(A[i],2);
+b=pow(A[j],2);
+ 
+if(a>b)
+{ 
+ ans.push_back(a);
+i++;
+}
+else
+{ 
+ans.push_back(b);
+j--;
+}
+k++;
+ 
+}
+reverse(ans.begin(),ans.end());
+return ans;
+ 
+}
