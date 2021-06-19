@@ -1,0 +1,33 @@
+bool Solution::hotel(vector<int> &arrive, vector<int> &depart, int K) {
+int n=arrive.size();
+sort(arrive.begin(),arrive.end());
+sort(depart.begin(),depart.end());
+int count=0;
+int i,j;
+i=1;
+int maxsofar=1;
+int maxtotal=1;
+j=0;
+while(i<n && j<n)
+{
+        if(arrive[i]>=depart[j])
+        {
+ j++;
+ maxsofar--;
+
+        }
+else
+{
+    i++;
+    maxsofar++;
+    maxtotal=max(maxtotal,maxsofar);
+}
+
+
+}
+ if(maxtotal<=K)return 1;
+ return 0;
+
+}
+
+
