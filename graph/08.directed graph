@@ -48,3 +48,63 @@ class Solution
 	   	
 	}
 };
+
+
+***********************************************************************************************************************************************
+
+
+
+int dfs(vector<int>adj[],vector<int>&vis,vector<int>&curr,int node)
+{ 
+    vis[node]=1;
+    curr[node]=1;
+    
+    for(auto x:adj[node])
+    {
+        if(curr[x])return 1;
+        if(vis[x]==0)
+        {
+            if(dfs(adj,vis,curr,x))return 1;
+            
+        }
+        
+        
+    }
+    
+    curr[node]=0;
+    
+    return 0;
+    
+    
+
+    
+    
+    
+}
+
+class Solution
+{
+    public:
+	//Function to detect cycle in a directed graph.
+	bool isCyclic(int V, vector<int> adj[]) 
+	{
+	   	
+	   	
+	  vector<int>vis(V,0);
+	  vector<int>curr(V,0);
+	  for(int i=0;i<V;i++)
+	  {
+	      if(vis[i]==0)
+	      {
+	          if(dfs(adj,vis,curr,i))
+	          return 1;
+	          
+	          
+	      }
+	      
+	  }
+	  return 0;
+	   	
+	   	
+	}
+};
