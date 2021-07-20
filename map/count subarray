@@ -1,0 +1,32 @@
+int Solution::solve(vector<int> &A, int B) {
+int n=A.size();
+map<int,int>m;
+
+int i;
+int runxor=0;
+int count=0;
+
+for(i=0;i<n;i++)
+{
+int x=A[i];
+
+
+int xorr=runxor^x;
+runxor=xorr;
+
+if(xorr==B)count++;
+
+int tofind=xorr^B;
+(  count+=m[tofind]);      
+
+m[xorr]++;
+
+ 
+
+
+
+}
+return count;
+
+
+}
