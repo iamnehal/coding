@@ -56,66 +56,67 @@ class Solution
 
 
 *******************
-int bfs(vector<int> adj[],vector<int>&vis,int node)
-{ vis[node]=1;
-    queue<pair<int,int>>q;
+ class Solution {
+  public:
+    // Function to detect cycle in an undirected graph.
+    bool isCycle(int V, vector<int> adj[]) {
+    int i;
+    bool vis[V]={false};
+for(i=0;i<V;i++)
+{
+    if(vis[i]==0)
+    {
+        queue<pair<int,int>>q;
     
-    q.push({node,-1});
-    while(q.size()!=0)
+    q.push({i,-1});
+    vis[i]=1;
+    while(q.empty()==0)
     {
+    
+        int node=q.front().first;
+        int parent=q.front().second;
+        q.pop();
+        for(auto x:adj[node])
+        {  
+            if(x!=parent)
+            {
+          if(vis[x]==1 )
+          return true;
+          else
+          {
+              // vis[x]=1;
+              q.push({x,node});
+              vis[x]=1;
+          }
+                
+            }
+        }
         
-        int x=q.front().first;
+        // if(vis[x]==0)
+        // {
+        //     vis[x]=1;
+        //     q.push({x,node});
+        // }
+        // else {
+        //     if(x!=parent)
+        //     {
+        //         return true;
+        //     }
+        // }
         
-    int parent=q.front().second;
-    vis[x]=1;
-    q.pop();
-    for(auto i:adj[x])
-    {
-        if(vis[i]==1)
-        {
-            if(i!=parent)return 1;
+        
             
         }
-        else
-        {
-            q.push({i,x});
-        }
         
-    }
-    
-    
+   
         
-    }
+       
     
     
-    
-    return 0;
     
 }
-
-
-class Solution 
-{
-    public:
-    //Function to detect cycle in an undirected graph.
-	bool isCycle(int V, vector<int>adj[])
-	{
-	   
-	  vector<int>vis(V,0);
-	  int i;
-	  for(i=0;i<V;i++)
-	  {
-	      if(vis[i]==0) //unvisited
-	      { 
-	          if(bfs(adj,vis,i))
-	          return 1;
-	          
-	          
-	      }
-	      
-	  }
-	  return 0;
-	   
-	   
-	}
+}
+ return false;
+    
+    }
 };
