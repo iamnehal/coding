@@ -1,0 +1,52 @@
+https://leetcode.com/problems/missing-number/submissions/
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        
+        int n=nums.size();
+        int i=0;
+    while(i<n)
+    {
+        int current=nums[i];
+        
+if(current==i+1)        
+{
+    i++;
+    
+
+}
+else
+{
+    if(current!=0)
+    {
+        int temp=nums[current-1];
+        nums[current-1]=current;
+        nums[i]=temp;
+        
+        
+    }
+    else
+    {
+         i++;
+        
+    }
+    
+    
+  
+    
+}
+        
+    }
+        
+        
+        for(i=0;i<n;i++)
+        {
+            if(nums[i]!=i+1)
+                return i+1;
+        }
+        
+          return 0;
+        
+    }
+};
