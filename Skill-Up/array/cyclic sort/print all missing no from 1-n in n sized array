@@ -1,0 +1,51 @@
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        
+        int i=0;
+        int n=nums.size();
+        while(i<n)
+        {
+            
+            int current=nums[i];
+            int correct=i+1;
+            
+            if(current==correct)i++;
+            else 
+            {
+                int positionnum=nums[current-1];
+                if(positionnum==current)
+                {
+                    i++;
+                }
+                else
+                {
+                    int temp=nums[current-1];
+                    nums[current-1]=nums[i];
+                    nums[i]=temp;
+                    
+                }
+                
+                
+                
+            }
+            
+            
+            
+        }
+        
+        vector<int>ans;
+        for(i=0;i<n;i++)
+        { cout<<nums[i]<<" ";
+            if(nums[i]!=i+1)
+            {
+                ans.push_back(i+1);
+            }
+        }
+        
+        
+        
+        return ans;
+        
+    }
+};
