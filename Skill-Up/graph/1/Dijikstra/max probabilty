@@ -1,0 +1,42 @@
+class Solution {
+public:
+    double maxProbability(int n, vector<vector<int>>& edges, vector<double>& succProb, int start, int end) {
+        vector<pair<int,double>>adj[n];
+        int i;
+        for(i=0;i<edges.size();i++)
+        {
+            adj[edges[i][0]].push_back({edges[i][1],succProb[i]});
+                        adj[edges[i][1]].push_back({edges[i][0],succProb[i]});
+            
+        }
+        
+        priority_queue<pair<double,int>>q;
+        q.push({ 1,start  });
+        vector<double>distance(n,0);
+        distance[start]=1;
+        while(q.size())
+        {
+            
+        int node=q.top().second;
+            double dist =q.top().first;
+            q.pop();
+            for(auto x: adj[node])
+            {
+                if( dist*x.second > distance[x.first])
+                {
+                    distance[x.first]=dist*x.second;
+                    q.push({distance[x.first],x.first});
+                    
+                }
+                
+            }
+            
+        }
+        if(distance[end]==INT_MAX)return 0;
+        
+        return distance[end];
+        
+        
+        
+    }
+};
