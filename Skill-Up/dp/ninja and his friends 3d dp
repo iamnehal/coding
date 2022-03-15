@@ -1,0 +1,50 @@
+
+https://www.codingninjas.com/codestudio/problems/ninja-and-his-friends_3125885?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos
+
+int solve(vector<vector<int>>grid,vector<vector<vector<int>>>&dp,int row,int cola,int colb)
+{
+    
+    if(cola<0||cola>=grid[0].size()||colb<0||colb>=grid[0].size())return -1e7;
+    if(row==grid.size()-1)
+    {
+        int a=grid[row][cola];
+        int b=0;
+        if(cola!=colb)b=grid[row][colb];
+        return a+b;
+    }
+    if(dp[row][cola][colb]!=-1)return dp[row][cola][colb];
+ int maxx=-1e7;    
+  
+    for(int i=-1;i<=1;i++)
+    {
+        for(int j=-1;j<=1;j++)
+        { int a=grid[row][cola];
+        int b=0;
+        if(cola!=colb)b=grid[row][colb];
+        int value= a+b;
+         
+            int ans=solve(grid,dp,row+1,cola+i,colb+j); 
+            maxx=max(maxx,ans+value );
+            
+        }
+    }
+    
+   return  dp[row][cola][colb]=maxx;
+    
+    
+    
+}
+
+
+
+int maximumChocolates(int r, int c, vector<vector<int>> &grid) {
+    // Write your code here.
+    int m=grid.size();
+    int n=grid[0].size();
+    
+    vector<vector<vector<int>>>dp(m,vector<vector<int>>(n,vector<int>(n,-1)));
+    
+    
+    return solve(grid,dp,0,0,n-1);
+    
+}
