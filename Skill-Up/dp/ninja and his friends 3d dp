@@ -31,7 +31,82 @@ int solve(vector<vector<int>>grid,vector<vector<vector<int>>>&dp,int row,int col
     
    return  dp[row][cola][colb]=maxx;
     
+    *************************************
     
+int maximumChocolates(int r, int c, vector<vector<int>> &grid) {
+    // Write your code here.
+    int m=grid.size();
+    int n=grid[0].size();
+    
+  
+    vector<vector<int>>dp(n,vector<int>(n,0));
+    int i,j,k,l,p;
+    
+   for( i=0;i<n;i++)
+   {
+       for(j=0;j<n;j++)
+       {
+           if(i==j)
+           {
+               dp[i][j]=grid[m-1][j];
+           }
+           else
+           {
+               dp[i][j]=grid[m-1][i]+grid[m-1][j];
+           }
+       }
+       
+   }
+    
+    for(k=m-2;k>=0;k--)
+    {  vector<vector<int>>temp(n,vector<int>(n,0));
+     
+        
+    for( i=0;i<n;i++)
+   {
+       for(j=0;j<n;j++)
+       { int a=grid[k][i];
+        int b=0;
+        if(i!=j)b=grid[k][j];
+        int value= a+b;
+    int l=-1e7;
+        int r=-1e8;
+        int c=-1e8;
+        int maxx=0;
+        
+    for(int col1=-1;col1<=1;col1++)
+    {
+        for(int col2=-1;col2<=1;col2++)
+        { 
+         
+
+            int ans=0;
+            if( col1+i>=0 && col1+i<n && col2+j>=0 && col2+j<n     )
+             ans=dp[i+col1][j+col2];
+            
+            maxx=max(maxx,ans );
+            
+        }
+    }
+        temp[i][j]=maxx+value;
+    
+        
+        
+        
+        
+           
+           
+       }
+       
+   }
+     dp=temp;
+    }
+    
+    
+    return dp[0][n-1];
+
+    
+}
     
 }
 
